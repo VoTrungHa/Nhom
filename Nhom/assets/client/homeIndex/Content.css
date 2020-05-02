@@ -1,0 +1,18 @@
+﻿ .mode_content_title
+ {
+     background:#fff;
+     padding: 0.2rem 02rem;
+     border-bottom:1px ridge #bdb5b5;
+     margin-top:10px;
+ }
+ .mode_content_title h4
+ {
+     font-size:22px;
+     margin-bottom:19px;
+ }
+ .mode_content .mode_content_title .nav li a
+ {
+     font-size: 18px;
+     padding:0 10px;
+     margin:0;
+ }

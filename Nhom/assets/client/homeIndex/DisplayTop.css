@@ -1,0 +1,48 @@
+﻿ .mode_content_slide
+ {
+     position:relative; 
+     border:2px solid #ff0000; 
+     border-radius:6px;
+     margin-top:65px;
+     padding:40px 20px;
+     background:white;
+
+ }
+ .slide_title
+ {
+     position:absolute;
+     top:-46px;
+     left:50%;
+     transform:translate(-50%,0);
+     background:#ff0000;
+     border-radius: 15px 15px 0 0;
+     color: white;
+     width:400px;
+     padding:9px 2px;
+     text-align: center;
+     font-weight: 500;
+     
+ }
+ h3
+ {
+     padding:0;
+     margin:0; 
+     font-weight:500;
+ }
+.slide_box:hover
+{
+    transition:margin-top 1s;
+    margin-top:-10px; 
+    cursor: pointer;
+}
+
+.slide_box .slide_box_content .start-vote
+{
+    color: #ffac00;
+}
+strong
+{
+    color:#ff0000;
+
+}
+ 

@@ -78,6 +78,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\client\header.css" />
+    <Content Include="assets\client\homeIndex\Content.css" />
+    <Content Include="assets\client\homeIndex\DisplayTop.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
