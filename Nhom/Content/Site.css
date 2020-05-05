@@ -13,7 +13,7 @@ body
 {
     width:100%;
     margin:0;
-    padding:0;
+    padding: 0 1.5rem;
     height:350px;
     box-shadow:2px 3px 3px #808080;
     overflow:hidden; 
@@ -48,5 +48,9 @@ body
     font-weight:500;
     border-bottom:1px solid #808080;
      
+}
+.mode_contents
+{
+    background:#fff;
 }
     

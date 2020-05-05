@@ -1,8 +1,7 @@
 ﻿
  Header
  {
-     background:#ff0000;
-     
+     background:#ff0000; 
      height:60px;
      padding:0;
      padding-top:0.5rem;
@@ -55,8 +54,17 @@
 .mode_home_slide
 {
     height:350px;
-    overflow:hidden;  
+    overflow:hidden;   
     background:#fff;
+    margin-top: 1rem;
+}
+@media (min-width: 992px)
+{
+.col-md-8 {
+    width: 66.66666666666666%;
+    padding:0;
+
+}
 }
  
 .nav li a:hover

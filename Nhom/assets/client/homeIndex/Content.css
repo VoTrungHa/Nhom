@@ -1,6 +1,5 @@
 ﻿ .mode_content_title
- {
-     background:#fff;
+ { 
      padding: 0.2rem 02rem;
      border-bottom:1px ridge #bdb5b5;
      margin-top:10px;
@@ -12,7 +11,50 @@
  }
  .mode_content .mode_content_title .nav li a
  {
-     font-size: 18px;
+     font-size: 20px;
+     margin-top:15px;
      padding:0 10px;
-     margin:0;
+     
  }
+ .mode_contents
+ {
+     background:#fff;
+     border-radius:7px;
+ }
+ .item_product
+ {
+     position:relative;
+     margin:0;
+     padding:0.3rem 1rem;  
+     box-shadow: 1px 2px 3px #bdb5b5;
+     
+ }
+ .sub-product
+ {  
+     display:none;
+     position:absolute;
+     padding: 0.1rem 1rem;
+     top:0; 
+     left:0;  
+     text-align:justify;
+     background: #fff;  
+     opacity: 0.5;
+     transition: all 2s;
+ }
+  .item_product:hover .sub-product
+  { 
+      display: block;
+      opacity:1;
+      top:-319px;
+     
+  }
+  .content-product .title
+  {
+      color: #000000;
+      font-size:19px;
+  }
+   .content-product .start-vote
+   {
+       color:#ffa400
+   }
+   
