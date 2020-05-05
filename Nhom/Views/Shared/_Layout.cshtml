@@ -12,7 +12,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link href="~/Content/bootstrap.css" rel="stylesheet" type="text/css" />
     <link href="~/assets/client/homeIndex/DisplayTop.css" rel="stylesheet" />
-
+    <link href="~/assets/client/homeIndex/footer.css" rel="stylesheet" />
    
 
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
@@ -29,7 +29,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            @RenderPage("_footer.cshtml")
         </footer>
     </div>
      
