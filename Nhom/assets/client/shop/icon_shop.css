@@ -1,0 +1,62 @@
+﻿.shopping
+{
+    
+    position:fixed;
+    top:65%;
+    right: 1.5%;
+    z-index: 9999999999;
+} 
+  
+.shopping .shop_icon
+{
+    cursor:pointer;
+    position:relative;
+    z-index:1;
+     background: #f15b5b;
+    border-radius: 50%;
+    padding:1rem; 
+}
+.shopping .shop_icon .number p
+{
+    position: absolute;
+    top: -14px;
+    right: 2px;
+    height: 25px;
+    min-width: 25px;
+    border-radius: 50%;
+    color: #fff;
+    background-color: #f30;
+    text-align: center;
+    line-height: 25px;
+    z-index: 9999;
+    border: 2px solid #fff;
+    font-size: 13px;
+    font-weight: 600;
+}
+.shopping .shop_icon .shop_border
+{ 
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    border-radius: 50%;
+    border:1px solid #ff0000;
+    padding:1rem; 
+    animation-name: shop;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-fill-mode:forwards;
+    
+}
+.shopping .shop_icon i
+{
+     color: #ffffff; 
+}
+
+@keyframes shop{
+    0%{ padding:1rem; border:1px solid #ff0000;}
+    25%{ padding:1.6rem; border:1px solid #ff0000;}
+    75%{ padding:2rem; border:1px solid #ff0000;}
+    100%{ padding:1rem; border:1px solid #ff0000;}
+}
+ 

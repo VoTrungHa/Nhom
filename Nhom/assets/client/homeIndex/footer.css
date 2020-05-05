@@ -1,4 +1,17 @@
-﻿ footer
- {
-     background: #ffffff;
- }
+﻿.footer_body
+{
+    display: block;
+    background: #ffffff;
+    padding: 5rem 0;
+}
+.widget-content ul
+{
+    display: block;
+
+    list-style:none;
+}
+.widget-content .clearfix
+{
+    display: flex;
+    justify-content: center;
+}

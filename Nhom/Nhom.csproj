@@ -80,6 +80,8 @@
     <Content Include="assets\client\header.css" />
     <Content Include="assets\client\homeIndex\Content.css" />
     <Content Include="assets\client\homeIndex\DisplayTop.css" />
+    <Content Include="assets\client\homeIndex\footer.css" />
+    <Content Include="assets\client\shop\icon_shop.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -116,7 +118,6 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\XemController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -126,7 +127,7 @@
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
     <Content Include="Views\Shared\_footer.cshtml" />
-    <Content Include="Views\Xem\Index.cshtml" />
+    <Content Include="Views\Shared\_Shopping.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

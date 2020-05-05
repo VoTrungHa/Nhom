@@ -57,4 +57,16 @@
    {
        color:#ffa400
    }
+    .mode_content_title .nav .nav-item .nav-link
+    {
+        font-size:20px;
+        margin-top: 1px;
+        cursor: pointer;
+        transition: all 0.7s;
+    }
+    .mode_content_title .nav .nav-item .nav-link:hover
+    {
+        color: #ff0000;
+
+    }
    

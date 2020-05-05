@@ -7,7 +7,9 @@
 }
 body
 {
+    position: relative;
     z-index:-9999; 
+     
 }
 .mode_home_page
 {
@@ -53,4 +55,5 @@ body
 {
     background:#fff;
 }
+ 
     
