@@ -3,24 +3,83 @@
     
     position:fixed;
     top:65%;
-    right: 1.5%;
+    right: 6%;
     z-index: 9999999999;
 } 
-  
-.shopping .shop_icon
+.shopping .shop_content
 {
-    cursor:pointer;
-    position:relative;
-    z-index:1;
-     background: #f15b5b;
-    border-radius: 50%;
-    padding:1rem; 
+    width:350px;
+    margin-top:-250px;
+    
+    display: block;
+    background: #ffffff;
+    justify-content:center;
+    align-content: center;
+    border-radius:10px;
+    box-shadow: 1px 2px 3px #808080;
+    padding: 1rem 1rem;
 }
-.shopping .shop_icon .number p
+.shop_content_item
 {
+    position:relative;
+    display: block;
+    padding: 1rem 0.1rem;
+    border-bottom: 1px dotted #808080;
+    
+}
+.exit_shop
+{
+    
+    position:absolute;
+    top:0px;
+    font-size:20px;
+    right:10px;
+    cursor: pointer;
+}
+.shop_content .shop_content_item .form-group button
+{
+    padding: 1px 11px;
+    
+    text-align:justify;
+
+}
+.shop_content .shop_content_item .form-group input
+{
+    width:45px;
+    text-align: center; 
+}
+  
+ 
+@keyframes shop{
+    0%{ padding:1rem; border:1px solid #ff0000;}
+    25%{ padding:1.6rem; border:1px solid #ff0000;}
+    75%{ padding:2rem; border:1px solid #ff0000;}
+    100%{ padding:1rem; border:1px solid #ff0000;}
+}
+ .icon_shop
+ {
+     position: relative;
+     float: right;
+     right: -40px;
+     z-index: 999999;
+     top:15px;
+ }
+ .icon_shop .icon_border
+ {
+     position:absolute;
+     padding: 1.5rem;
+     border:1px solid #ff0000;
+     border-radius:50%;
+     right:-3px;
+      
+     z-index:-1;
+ }
+   .icon_shop .number
+   {
+       
     position: absolute;
-    top: -14px;
-    right: 2px;
+    top: -15px;
+    right: -15px;
     height: 25px;
     min-width: 25px;
     border-radius: 50%;
@@ -32,31 +91,15 @@
     border: 2px solid #fff;
     font-size: 13px;
     font-weight: 600;
-}
-.shopping .shop_icon .shop_border
-{ 
+   }
+  .icon_shop .icon_bg
+  {
+    background: #ff6a00;
     position: absolute;
-    top:50%;
-    left:50%;
-    transform: translate(-50%,-50%);
+    padding: 3rem;
     border-radius: 50%;
-    border:1px solid #ff0000;
-    padding:1rem; 
-    animation-name: shop;
-    animation-duration: 2s;
-    animation-iteration-count: infinite;
-    animation-fill-mode:forwards;
-    
-}
-.shopping .shop_icon i
-{
-     color: #ffffff; 
-}
+    right: -14px;
+    top: -11px;
+    z-index: -2;
 
-@keyframes shop{
-    0%{ padding:1rem; border:1px solid #ff0000;}
-    25%{ padding:1.6rem; border:1px solid #ff0000;}
-    75%{ padding:2rem; border:1px solid #ff0000;}
-    100%{ padding:1rem; border:1px solid #ff0000;}
-}
- 
+  }
