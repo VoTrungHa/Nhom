@@ -14,5 +14,10 @@ namespace Nhom.Controllers
         {
             return View();
         }
+        [ChildActionOnly]
+        public ActionResult ContentMain()
+        {
+            return PartialView();
+        }
 	}
 }

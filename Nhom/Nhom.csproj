@@ -128,6 +128,7 @@
     <Content Include="packages.config" />
     <Content Include="Views\Shared\_footer.cshtml" />
     <Content Include="Views\Shared\_Shopping.cshtml" />
+    <Content Include="Views\Shared\ContentMain.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -138,6 +139,12 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ModeDb\ModeDb.csproj">
+      <Project>{7d93a7fc-59da-4106-87b4-ce24c55cc91f}</Project>
+      <Name>ModeDb</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
