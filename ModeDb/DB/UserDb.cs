@@ -26,5 +26,41 @@ namespace ModeDb.DB
             db.SaveChanges();
             return model.Email;
         }
+
+        public int LoginUser(string Email, string passWord)
+        {
+            var result = db.Users.SingleOrDefault(x => x.Email == Email);
+            if (result == null)
+            {
+                return 0;
+            }
+            else
+            {
+                if (result.Status == false)
+                {
+                    return -1;
+                }
+                else
+                {
+                    if (result.PassWord == passWord)
+                    {
+                        
+                        if(result.Admin==true)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+
+                    }
+                    else
+                    {
+                        return -2;
+                    }
+                }
+            }
+        }
     }
 }

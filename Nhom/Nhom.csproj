@@ -1915,9 +1915,10 @@
     <Compile Include="Areas\admin\Controllers\DangKyController.cs" />
     <Compile Include="Areas\admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\admin\Controllers\UserLoginController.cs" />
+    <Compile Include="Areas\admin\Models\UserLoginModel.cs" />
     <Compile Include="Common\CommonContact.cs" />
     <Compile Include="Common\Encryptor.cs" />
-    <Compile Include="Common\UserLogin.cs" />
+    <Compile Include="Common\UserSection.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -1942,7 +1943,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\admin\Models\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

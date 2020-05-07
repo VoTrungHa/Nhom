@@ -5,8 +5,9 @@ using System.Web;
 
 namespace Nhom.Common
 {
-    public class UserLogin
+    public class UserSection
     {
-
+        public string HoTen { get; set; }
+        public string email { get; set; }
     }
 }
