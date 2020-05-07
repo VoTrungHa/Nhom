@@ -11,15 +11,21 @@ namespace ModeDb.DB
    
     public class ProductDB
     {
-        ModelDbNhom db = null;
+        NhomDbModel db = null;
         public ProductDB()
         {
-            db = new ModelDbNhom();
+            db = new NhomDbModel();
         }
-
+        // lấy danh sách sản phẩm theo kiểu phân trang
         public IEnumerable<MatHang> getPageListProduct(int page, int pageSize)// bắt đầu và kết thúc. tải packe topagelist
         {
             return db.MatHangs.OrderByDescending(x => x.NgayNhap).ToPagedList(page, pageSize);
+        }
+        // lấy danh sách sản phẩm
+
+        public List<MatHang> getlistAll()
+        {
+            return db.MatHangs.ToList();
         }
     }
 }

@@ -13,17 +13,20 @@ namespace ModeDb.EF
         public User()
         {
             KhachHangs = new HashSet<KhachHang>();
-            NhanViens = new HashSet<NhanVien>();
         }
-
-        [Key]
-        public long MaUse { get; set; }
 
         [StringLength(150)]
         public string UserName { get; set; }
 
+        [Key]
+        [StringLength(100)]
+        public string Email { get; set; }
+
         [StringLength(150)]
         public string PassWord { get; set; }
+
+        [StringLength(12)]
+        public string Phone { get; set; }
 
         public bool? Status { get; set; }
 
@@ -37,8 +40,5 @@ namespace ModeDb.EF
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<KhachHang> KhachHangs { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<NhanVien> NhanViens { get; set; }
     }
 }

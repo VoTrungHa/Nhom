@@ -65,9 +65,9 @@ namespace ModeDb.EF
         public string DungLuongPin { get; set; }
 
         public int? luotXem { get; set; }
+
         [StringLength(50)]
         public string link { get; set; }
-
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietDonHang> ChiTietDonHangs { get; set; }

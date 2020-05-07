@@ -1886,6 +1886,8 @@
     <Content Include="assets\admin\vendor\jquery\jquery.slim.min.map" />
     <Content Include="Areas\admin\Views\Home\Index.cshtml" />
     <Content Include="Areas\admin\Views\Shared\BannerMain.cshtml" />
+    <Content Include="Areas\admin\Views\UserLogin\Index.cshtml" />
+    <Content Include="Areas\admin\Views\Regis\Index.cshtml" />
     <None Include="Scripts\jquery-3.5.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.5.0.js" />
     <Content Include="Scripts\jquery-3.5.0.min.js" />
@@ -1911,6 +1913,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\admin\adminAreaRegistration.cs" />
     <Compile Include="Areas\admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\admin\Controllers\RegisController.cs" />
+    <Compile Include="Areas\admin\Controllers\UserLoginController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -1923,6 +1927,9 @@
     <Content Include="Views\Shared\_footer.cshtml" />
     <Content Include="Views\Shared\_Shopping.cshtml" />
     <Content Include="Views\Shared\ContentMain.cshtml" />
+    <Content Include="Views\Shared\_Caroulse.cshtml" />
+    <Content Include="Views\Shared\_HotContent.cshtml" />
+    <Content Include="Views\Shared\_LayoutPublic.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

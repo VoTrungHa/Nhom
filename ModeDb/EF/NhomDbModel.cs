@@ -5,10 +5,10 @@ namespace ModeDb.EF
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
 
-    public partial class ModelDbNhom : DbContext
+    public partial class NhomDbModel : DbContext
     {
-        public ModelDbNhom()
-            : base("name=ModelDbNhom")
+        public NhomDbModel()
+            : base("name=NhomDbModel")
         {
         }
 
@@ -19,7 +19,6 @@ namespace ModeDb.EF
         public virtual DbSet<KhachHang> KhachHangs { get; set; }
         public virtual DbSet<LoaiMatHang> LoaiMatHangs { get; set; }
         public virtual DbSet<MatHang> MatHangs { get; set; }
-        public virtual DbSet<NhanVien> NhanViens { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<User> Users { get; set; }
 
@@ -104,6 +103,10 @@ namespace ModeDb.EF
                 .IsUnicode(false);
 
             modelBuilder.Entity<MatHang>()
+                .Property(e => e.link)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<MatHang>()
                 .HasMany(e => e.ChiTietDonHangs)
                 .WithRequired(e => e.MatHang)
                 .WillCascadeOnDelete(false);
@@ -113,16 +116,16 @@ namespace ModeDb.EF
                 .WithRequired(e => e.MatHang)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<NhanVien>()
-                .Property(e => e.SoDT)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<NhanVien>()
+            modelBuilder.Entity<User>()
                 .Property(e => e.Email)
                 .IsUnicode(false);
 
             modelBuilder.Entity<User>()
                 .Property(e => e.PassWord)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<User>()
+                .Property(e => e.Phone)
                 .IsUnicode(false);
 
             modelBuilder.Entity<User>()
