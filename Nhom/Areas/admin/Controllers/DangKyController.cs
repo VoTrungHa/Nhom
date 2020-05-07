@@ -22,26 +22,35 @@ namespace Nhom.Areas.admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var db = new UserDb();
-                var result = db.GetUserByEmail(model.Email);
-                if (model.Status == true)
+                if (model.RePassWord == model.PassWord)
                 {
-                    if (result == null)
+                    var db = new UserDb();
+                    var result = db.GetUserByEmail(model.Email);
+                    if (model.Status == true)
                     {
-                        var password = Encryptor.MD5Hash(model.PassWord);// mã hóa pass
-                        model.PassWord = password;
-                        db.InsertUser(model);
-                        return RedirectToAction("Index", "UserLogin");
+                        if (result == null)
+                        {
+
+                            var password = Encryptor.MD5Hash(model.PassWord);// mã hóa pass
+                            model.PassWord = password;
+                            db.InsertUser(model);
+                            return RedirectToAction("Index", "UserLogin");
+                        }
+                        else
+                        {
+                            ModelState.AddModelError("", "Email Đã Tồn Tại !");
+                        }
                     }
                     else
                     {
-                        ModelState.AddModelError("", "Email Đã Tồn Tại !");
+                        ModelState.AddModelError("", "Hãy Nhấn xác nhận đăng ký để thành công !");
                     }
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Hãy Nhấn xác nhận đăng ký để thành công !");
+                    ModelState.AddModelError("", "Mật khẩu phải giống nhau chứ  !");
                 }
+                
 
             }
             return View();
