@@ -8,3 +8,7 @@ C:\Users\hp-pc\Desktop\git\Nhom\ModeDb\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\hp-pc\Desktop\git\Nhom\ModeDb\obj\Debug\ModeDb.csprojResolveAssemblyReference.cache
 C:\Users\hp-pc\Desktop\git\Nhom\ModeDb\obj\Debug\ModeDb.dll
 C:\Users\hp-pc\Desktop\git\Nhom\ModeDb\obj\Debug\ModeDb.pdb
+C:\Users\hp-pc\Desktop\git\Nhom\ModeDb\bin\Debug\PagedList.dll
+C:\Users\hp-pc\Desktop\git\Nhom\ModeDb\bin\Debug\PagedList.Mvc.dll
+C:\Users\hp-pc\Desktop\git\Nhom\ModeDb\bin\Debug\PagedList.xml
+C:\Users\hp-pc\Desktop\git\Nhom\ModeDb\bin\Debug\PagedList.Mvc.xml

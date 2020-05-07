@@ -1,4 +1,7 @@
-﻿
+﻿@model PagedList.IPagedList<ModeDb.EF.MatHang>
+@using PagedList.Mvc;
+
+
 <div class="col-md-6 mt-3">
     <div class="item_product">
         <a href="#">
@@ -15,6 +18,7 @@
                         <div class="price">
                             <strong>33.490.000₫</strong>
                         </div>
+                       
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -33,37 +37,50 @@
         </a>
     </div>
 </div>
-<div class="col-md-3 mt-3">
+
+
+@foreach (var item in Model)
+{
+    
+     <div class="col-md-3 mt-3">
     <div class="item_product">
-        <a href="#">
+        <a href="@item.link">
             <div class="row">
                 <div class="col-md-12">
                     <div class="image-product">
-                        <img src="https://phonestorewebsite.000webhostapp.com/storage/images/products/1587557416_C5sYA7pn_iphone-11-pro-den-didongviet_1_2.jpg" style="width:250px;height:100%" alt="iphoe11 pro max " />
+                        <img src="~/Images/@item.Image" style="width:250px;height:100%" alt="iphoe11 pro max " />
                     </div>
                     <div class="content-product">
-                        <h3 class="title">IPhone 11 Pro Max</h3>
+                        <h3 class="title">@item.TenMh</h3>
                         <div class="start-vote">
                             <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i class="far fa-star"></i>
                         </div>
                         <div class="price">
-                            <strong>33.490.000₫</strong>
+                            <strong>@item.GiaThanh ₫</strong>
+                            @{if (@item.status == false)
+                            {<strong> Sản Phẩm hết hàng</strong> }}
                         </div>
+                         
+                                                                       
                     </div>
                 </div>
                 <div class="col-md-12">
                     <div class="sub-product">
-                        <p><strong><i class="fas fa-tv"></i> Màn Hình: </strong>OLED, 6.5", Super Retina XDR</p>
-                        <p><strong><i class="fas fa-camera-retro"></i> Camera Trước: </strong>12 MP</p>
-                        <p><strong><i class="fas fa-camera-retro"></i> Camera sau: </strong>3 camera 12 MP</p>
-                        <p><strong><i class="fas fa-microchip"></i> CPU: </strong>Apple A13 Bionic 6 nhân</p>
-                        <p><strong><i class="fas fa-microchip"></i>GPU: </strong>Apple GPU 4 nhân</p>
-                        <p><strong><i class="fas fa-hdd"></i> RAM: </strong>4GB</p>
-                        <p><strong><i class="fas fa-hdd"></i> Bộ Nhớ Trong: </strong>64GB</p>
-                        <p><strong><i class="fas fa-battery-full"></i> Dung Lượng PIN: </strong>3969 mAh, có sạc nhanh</p>
+                        <p><strong><i class="fas fa-tv"></i> Màn Hình: </strong>@item.ManHinh</p>
+                        <p><strong><i class="fas fa-camera-retro"></i> Camera Trước: </strong>@item.CameraT</p>
+                        <p><strong><i class="fas fa-camera-retro"></i> Camera sau: </strong>@item.CameraS</p>
+                        <p><strong><i class="fas fa-microchip"></i> CPU: </strong>@item.Cpu</p>
+                        <p><strong><i class="fas fa-microchip"></i>GPU: </strong>@item.Gpu</p>
+                        <p><strong><i class="fas fa-hdd"></i> RAM: </strong>@item.Ram</p>
+                        <p><strong><i class="fas fa-hdd"></i> Bộ Nhớ Trong: </strong>@item.BoNho</p>
+                        <p><strong><i class="fas fa-battery-full"></i> Dung Lượng PIN: </strong>@item.DungLuongPin</p>
                     </div>
                 </div>
             </div>
         </a>
     </div>
 </div>
+}
+
+
+

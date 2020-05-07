@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ModeDb.DB;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -15,9 +16,11 @@ namespace Nhom.Controllers
             return View();
         }
         [ChildActionOnly]
-        public ActionResult ContentMain()
+        public ActionResult ContentMain(int page=1,int sizePage=10)
         {
-            return PartialView();
+            var db = new ProductDB();
+            var model = db.getPageListProduct(page, sizePage); 
+            return PartialView(model);
         }
 	}
 }
