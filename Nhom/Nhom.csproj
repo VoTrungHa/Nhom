@@ -1887,7 +1887,7 @@
     <Content Include="Areas\admin\Views\Home\Index.cshtml" />
     <Content Include="Areas\admin\Views\Shared\BannerMain.cshtml" />
     <Content Include="Areas\admin\Views\UserLogin\Index.cshtml" />
-    <Content Include="Areas\admin\Views\Regis\Index.cshtml" />
+    <Content Include="Areas\admin\Views\DangKy\Index.cshtml" />
     <None Include="Scripts\jquery-3.5.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.5.0.js" />
     <Content Include="Scripts\jquery-3.5.0.min.js" />
@@ -1912,9 +1912,12 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\admin\adminAreaRegistration.cs" />
+    <Compile Include="Areas\admin\Controllers\DangKyController.cs" />
     <Compile Include="Areas\admin\Controllers\HomeController.cs" />
-    <Compile Include="Areas\admin\Controllers\RegisController.cs" />
     <Compile Include="Areas\admin\Controllers\UserLoginController.cs" />
+    <Compile Include="Common\CommonContact.cs" />
+    <Compile Include="Common\Encryptor.cs" />
+    <Compile Include="Common\UserLogin.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

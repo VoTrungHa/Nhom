@@ -64,7 +64,7 @@
     <Compile Include="EF\KhachHang.cs" />
     <Compile Include="EF\LoaiMatHang.cs" />
     <Compile Include="EF\MatHang.cs" />
-    <Compile Include="EF\NhomDbModel.cs" />
+    <Compile Include="EF\ModelDbNhom.cs" />
     <Compile Include="EF\sysdiagram.cs" />
     <Compile Include="EF\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

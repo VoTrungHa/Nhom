@@ -2,7 +2,7 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutPublic.cshtml";
 }
-
+@model ModeDb.EF.User
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,43 +38,52 @@
                     <div class="text-center">
                         <h2 style="color:#ff2f00;text-shadow:1px 1px 1px #808080;font-size:34px; padding:1rem 0; font-weight:500;">Đăng Ký</h2>
                     </div>
-                    <form class="user">
+
+                    @using (Html.BeginForm("Index", "DangKy", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        @Html.ValidationSummary(true, "")
+                         
                         <div class="form-group">
-                            <input type="text" style="font-size:18px" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Họ và Tên">
+                            @Html.TextBoxFor(Model => Model.HoTen, new { @class = "form-control form-control-user", @placeholder = "họ Tên", @style = "font-size:18px" })
+
                         </div>
                         <div class="form-group">
-                            <input type="email" style="font-size:18px" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address...">
+                            @Html.TextBoxFor(Model => Model.Email, new { @class = "form-control form-control-user", @placeholder = "Email", @style = "font-size:18px", @type="email"  })
                         </div>
                         <div class="form-group">
-                            <input type="text" style="font-size:18px" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Phone.">
+                            @Html.TextBoxFor(Model => Model.Phone, new { @class = "form-control form-control-user", @placeholder = "Số điện thoại", @style = "font-size:18px" })
                         </div>
                         <div class="form-group">
-                            <input type="password" style="font-size:18px" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
+                            @Html.PasswordFor(Model => Model.PassWord, new { @class = "form-control form-control-user", @placeholder = "mật khẩu", @style = "font-size:18px" })
                         </div>
                         <div class="form-group">
-                            <input type="password" style="font-size:18px" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password Confimation">
+                            @Html.PasswordFor(Model => Model.RePassWord, new { @class = "form-control form-control-user", @placeholder = "Lập lại mật khẩu", @style = "font-size:18px" })
                         </div>
                         <div class="form-group">
                             <div class="custom-control custom-checkbox small">
-                                <input type="checkbox" style="font-size:18px" class="custom-control-input" id="customCheck">
-                                <label class="custom-control-label" for="customCheck">Remember Me</label>
+                                @Html.CheckBoxFor(Model => Model.Status, new { @class = "custom-control-input", @id = "customCheck", @style = "font-size:18px" })
+
+                                <label class="custom-control-label" for="customCheck">Xác nhận đăng ký</label>
                             </div>
                         </div>
-                        <a href="index.html" style="font-size:18px" class="btn btn-primary btn-user btn-block">
-                            Login
-                        </a>
-                        <hr>
+
+                        <input type="submit" style="font-size:18px" value="Đăng ký" class="btn btn-primary btn-user btn-block">
+
 
                         <a href="index.html" style="font-size:18px" class="btn btn-google btn-user btn-block">
                             <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
                         </a>
-                    </form>
+                    }
+
+
                     <hr>
                     <div class="text-center">
                         <a class="small" href="forgot-password.html">Forgot Password?</a>
                     </div>
                     <div class="text-center">
-                        <a class="small" href="register.html">Create an Account!</a>
+                        <a class="small" href="/admin/UserLogin">Go to Login </a>
                     </div>
                     <div class="text-center">
                         <a class="small" href="/">Quay Lại Trang Chủ!</a>

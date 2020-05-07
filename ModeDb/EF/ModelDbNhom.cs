@@ -5,10 +5,10 @@ namespace ModeDb.EF
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
 
-    public partial class NhomDbModel : DbContext
+    public partial class ModelDbNhom : DbContext
     {
-        public NhomDbModel()
-            : base("name=NhomDbModel")
+        public ModelDbNhom()
+            : base("name=ModelDbNhom")
         {
         }
 
@@ -121,16 +121,16 @@ namespace ModeDb.EF
                 .IsUnicode(false);
 
             modelBuilder.Entity<User>()
-                .Property(e => e.PassWord)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<User>()
                 .Property(e => e.Phone)
                 .IsUnicode(false);
 
             modelBuilder.Entity<User>()
-                .Property(e => e.Ava)
-                .IsFixedLength();
+                .Property(e => e.PassWord)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<User>()
+                .Property(e => e.RePassWord)
+                .IsUnicode(false);
         }
     }
 }

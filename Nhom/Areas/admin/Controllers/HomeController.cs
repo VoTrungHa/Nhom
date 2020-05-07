@@ -14,6 +14,9 @@ namespace Nhom.Areas.admin.Controllers
         {
             return View();
         }
+
+        
+         
         [ChildActionOnly]
         public ActionResult BannerMain()
         {
