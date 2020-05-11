@@ -1,0 +1,63 @@
+﻿@model IEnumerable<ModeDb.EF.User>
+
+@{
+    Layout = null;
+    Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HoTen)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PassWord)
+            </th>
+            
+             
+            <th>Hoạt động</th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HoTen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PassWord)
+            </td>
+             
+            <td>
+                @Html.ActionLink("Chỉnh Sửa", "Edit", new { id=item.IDUser }) |
+                @Html.ActionLink("Xem Chi Tiết", "Details", new { id=item.IDUser }) |
+                @Html.ActionLink("Xóa", "Delete", new { id=item.IDUser })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

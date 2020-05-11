@@ -91,6 +91,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\admin\css\addproduct.css" />
     <Content Include="assets\admin\css\sb-admin-2.css" />
     <Content Include="assets\admin\css\sb-admin-2.min.css" />
     <Content Include="assets\admin\img\undraw_posting_photo.svg" />
@@ -1888,6 +1889,16 @@
     <Content Include="Areas\admin\Views\Shared\BannerMain.cshtml" />
     <Content Include="Areas\admin\Views\UserLogin\Index.cshtml" />
     <Content Include="Areas\admin\Views\DangKy\Index.cshtml" />
+    <Content Include="Areas\admin\Views\ManagerUser\Create.cshtml" />
+    <Content Include="Areas\admin\Views\ManagerUser\Delete.cshtml" />
+    <Content Include="Areas\admin\Views\ManagerUser\Details.cshtml" />
+    <Content Include="Areas\admin\Views\ManagerUser\Edit.cshtml" />
+    <Content Include="Areas\admin\Views\ManagerUser\Index.cshtml" />
+    <Content Include="Areas\admin\Views\ManagerProduct\Create.cshtml" />
+    <Content Include="Areas\admin\Views\ManagerProduct\Delete.cshtml" />
+    <Content Include="Areas\admin\Views\ManagerProduct\Details.cshtml" />
+    <Content Include="Areas\admin\Views\ManagerProduct\Edit.cshtml" />
+    <Content Include="Areas\admin\Views\ManagerProduct\Index.cshtml" />
     <None Include="Scripts\jquery-3.5.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.5.0.js" />
     <Content Include="Scripts\jquery-3.5.0.min.js" />
@@ -1914,6 +1925,8 @@
     <Compile Include="Areas\admin\adminAreaRegistration.cs" />
     <Compile Include="Areas\admin\Controllers\DangKyController.cs" />
     <Compile Include="Areas\admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\admin\Controllers\ManagerProductController.cs" />
+    <Compile Include="Areas\admin\Controllers\ManagerUserController.cs" />
     <Compile Include="Areas\admin\Controllers\UserLoginController.cs" />
     <Compile Include="Areas\admin\Models\UserLoginModel.cs" />
     <Compile Include="Common\CommonContact.cs" />

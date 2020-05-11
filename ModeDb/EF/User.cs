@@ -9,16 +9,17 @@
     [Table("User")]
     public partial class User
     {
-        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public User()
         {
             KhachHangs = new HashSet<KhachHang>();
         }
 
-        
         [Key]
-        [StringLength(100)]
+        public long IDUser { get; set; }
+
         [Required(ErrorMessage = "Bạn chưa nhập Email")]
+        [StringLength(100)]
         public string Email { get; set; }
         [Required(ErrorMessage = "Bạn chưa nhập Họ Tên")]
         [StringLength(50)]
@@ -30,6 +31,7 @@
         [StringLength(150)]
         public string PassWord { get; set; }
         [Required(ErrorMessage = "bạn chưa nhập lại mật khẩu")]
+
         [StringLength(150)]
         public string RePassWord { get; set; }
 

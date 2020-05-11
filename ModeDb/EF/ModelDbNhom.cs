@@ -32,6 +32,10 @@ namespace ModeDb.EF
                 .Property(e => e.MucGiamGia)
                 .HasPrecision(18, 0);
 
+            modelBuilder.Entity<ChiTietDonHang>()
+                .Property(e => e.Image)
+                .IsUnicode(false);
+
             modelBuilder.Entity<Content>()
                 .Property(e => e.GiaThanh)
                 .HasPrecision(18, 0);
@@ -131,6 +135,11 @@ namespace ModeDb.EF
             modelBuilder.Entity<User>()
                 .Property(e => e.RePassWord)
                 .IsUnicode(false);
+
+            modelBuilder.Entity<User>()
+                .HasMany(e => e.KhachHangs)
+                .WithRequired(e => e.User)
+                .WillCascadeOnDelete(false);
         }
     }
 }

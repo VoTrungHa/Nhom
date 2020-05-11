@@ -1,0 +1,168 @@
+﻿@model ModeDb.EF.MatHang
+
+@{
+    Layout = null;
+    Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
+}
+  
+<html>
+ 
+<body>
+    <div class="container">
+       
+        <div class="section-content">
+            <h5 class="mb-4">
+                <font style="vertical-align:inherit; font-size:30px">Nhập Thêm Sản Phẩm</font>
+            </h5>
+@using (Html.BeginForm("Create", "ManagerProduct", FormMethod.Post, new { @class = "need-validation was-validated" }))
+                {
+            <div class="row">
+               
+                <hr />
+                <div class="col-md-4">
+                    
+                    <div style="height:350px">
+                        <img src="https://phonestorewebsite.000webhostapp.com/storage/images/products/1577117101_s5qX2f3I_iphone-11-pro-vang-1-org.jpg" style="width:100% ; height:350px">
+                    </div>
+                    <button class="btn btn-primary btn-lg btn-block" type="submit" style="margin-bottom:5px">
+                        <font style="vertical-align: inherit;">
+                            <font style="vertical-align: inherit;">Chọn Hinh Ảnh</font>
+                        </font>
+                    </button>
+                </div>
+                <div class="col-md-8"> 
+                @Html.AntiForgeryToken() 
+               
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.TenMh, new { @class = "control-label col-md-2", @style = "vertical-align: inherit;" })
+                                
+                                    @Html.TextBoxFor(model => model.TenMh, new { @class = "form-control", @id = "NameSP" })
+                                    @Html.ValidationMessageFor(model => model.TenMh)
+                               
+                            </div> 
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Soluong,new { @class = "control-label col-md-2", @style = "vertical-align: inherit;" })
+
+                                @Html.TextBoxFor(model => model.Soluong, new { @class = "form-control", @id = "NameSP" })
+                                @Html.ValidationMessageFor(model => model.Soluong)
+
+                            </div> 
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.GiaThanh, new { @class = "control-label col-md-2", @style = "vertical-align: inherit;" })
+
+                                @Html.TextBoxFor(model => model.GiaThanh, new { @class = "form-control", @id = "NameSP" })
+                                @Html.ValidationMessageFor(model => model.GiaThanh)
+
+                            </div> 
+                        </div>
+                         
+                        <div class="col-md-4 mb-3">
+                              
+                            <label for="firstName">
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;">Hãng Sản Xuất</font>
+                                </font>
+                            </label>
+                            <select class="custom-select d-block w-100" style="width: 100%; height: 34px; border-radius: 4px; " id="HangSX" name="MaLoaiHang">
+                                <option value="IPhone">IPhone</option>
+                                <option value="SamSung">SamSung</option>
+                                 
+                            </select>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.ManHinh, new { @class = "control-label col-md-2", @style = "vertical-align: inherit;" })
+
+                                @Html.TextBoxFor(model => model.ManHinh, new { @class = "form-control", @id = "NameSP" })
+                                @Html.ValidationMessageFor(model => model.ManHinh)
+
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.CameraT, new { @class = "control-label col-md-2", @style = "vertical-align: inherit;" })
+
+                                @Html.TextBoxFor(model => model.CameraT, new { @class = "form-control", @id = "NameSP" })
+                                @Html.ValidationMessageFor(model => model.CameraT)
+
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.CameraS, new { @class = "control-label col-md-2", @style = "vertical-align: inherit;" })
+
+                                @Html.TextBoxFor(model => model.CameraS, new { @class = "form-control", @id = "NameSP" })
+                                @Html.ValidationMessageFor(model => model.CameraS)
+
+                            </div>
+                        </div>
+                         
+                        <div class="col-md-4 mb-3">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Cpu, new { @class = "control-label col-md-2", @style = "vertical-align: inherit;" })
+
+                                @Html.TextBoxFor(model => model.Cpu, new { @class = "form-control", @id = "NameSP" })
+                                @Html.ValidationMessageFor(model => model.Cpu)
+
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Gpu, new { @class = "control-label col-md-2", @style = "vertical-align: inherit;" })
+
+                                @Html.TextBoxFor(model => model.Gpu, new { @class = "form-control", @id = "NameSP" })
+                                @Html.ValidationMessageFor(model => model.Gpu)
+
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Ram, new { @class = "control-label col-md-2", @style = "vertical-align: inherit;" })
+
+                                @Html.TextBoxFor(model => model.Ram, new { @class = "form-control", @id = "NameSP" })
+                                @Html.ValidationMessageFor(model => model.Ram)
+
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-4 mb-3">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.DungLuongPin, new { @class = "control-label col-md-2", @style = "vertical-align: inherit;" })
+
+                                @Html.TextBoxFor(model => model.DungLuongPin, new { @class = "form-control", @id = "NameSP" })
+                                @Html.ValidationMessageFor(model => model.DungLuongPin)
+
+                            </div>
+                        </div>
+                    </div> 
+                <div class="button-cj">
+
+
+                <a href="#" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">
+                    Lưu
+                    <svg class="bi bi-union" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4 5.5A1.5 1.5 0 015.5 4h9A1.5 1.5 0 0116 5.5v9a1.5 1.5 0 01-1.5 1.5h-9A1.5 1.5 0 014 14.5v-9z" />
+                        <path d="M0 1.5A1.5 1.5 0 011.5 0h9A1.5 1.5 0 0112 1.5v9a1.5 1.5 0 01-1.5 1.5h-9A1.5 1.5 0 010 10.5v-9z" />
+                    </svg>
+                </a>
+            </div>
+            
+                </div>
+            </div>
+            
+}
+        </div>
+         
+        
+    </div>
+</body>
+</html>
+
+

@@ -23,6 +23,7 @@ namespace ModeDb.DB
         public string InsertUser(User model)// insert user đen db
         {
             db.Users.Add(model);
+           
             db.SaveChanges();
             return model.Email;
         }

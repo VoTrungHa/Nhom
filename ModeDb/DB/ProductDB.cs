@@ -26,6 +26,7 @@ namespace ModeDb.DB
         public List<MatHang> getlistAll()
         {
             return db.MatHangs.ToList();
+            
         }
     }
 }

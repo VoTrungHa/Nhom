@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ModeDb.EF;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +9,7 @@ namespace Nhom.Areas.admin.Controllers
 {
     public class HomeController : Controller
     {
+        private ModelDbNhom db = new ModelDbNhom();
         //
         // GET: /admin/Home/
         public ActionResult Index()
@@ -20,6 +22,8 @@ namespace Nhom.Areas.admin.Controllers
         [ChildActionOnly]
         public ActionResult BannerMain()
         {
+            TempData["pro"] = db.MatHangs.Count();
+            TempData["user"] = db.Users.Count();
             return PartialView();
         }
 	}
