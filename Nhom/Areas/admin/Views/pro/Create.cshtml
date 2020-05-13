@@ -3,7 +3,8 @@
 @{
     Layout = null;
     Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
-      
+    
+  
 }
  
     <div class="container"> 
@@ -14,7 +15,7 @@
             @using (Html.BeginForm("create", "pro", FormMethod.Post, new { enctype = "multipart/form-data" }))
                 {
                 @Html.AntiForgeryToken()
-                 @Html.ValidationSummary(true)
+                 @Html.ValidationSummary(true, "", new {@style="color:red" })
                 
                 <div class="row">
                   
@@ -42,7 +43,7 @@
                         @Html.LabelFor(model => model.TenMh, new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
                             @Html.EditorFor(model => model.TenMh)
-                            @Html.ValidationMessageFor(model => model.TenMh)
+                            @Html.ValidationMessageFor(model => model.TenMh, "", new { @style = "color:red" })
                         </div>
                     </div>
                 </div>
@@ -52,7 +53,7 @@
                         @Html.LabelFor(model => model.GiaThanh, new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
                             @Html.EditorFor(model => model.GiaThanh)
-                            @Html.ValidationMessageFor(model => model.GiaThanh)
+                            @Html.ValidationMessageFor(model => model.GiaThanh, "", new { @style = "color:red" })
                         </div>
                     </div>
                 </div>
@@ -61,7 +62,7 @@
                         @Html.LabelFor(model => model.GiaKhuyenMai, new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
                             @Html.EditorFor(model => model.GiaKhuyenMai)
-                            @Html.ValidationMessageFor(model => model.GiaKhuyenMai)
+                            @Html.ValidationMessageFor(model => model.GiaKhuyenMai, "", new { @style = "color:red" })
                         </div>
                     </div>
                 </div>
@@ -70,7 +71,7 @@
                         @Html.LabelFor(model => model.Soluong, new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
                             @Html.EditorFor(model => model.Soluong)
-                            @Html.ValidationMessageFor(model => model.Soluong)
+                            @Html.ValidationMessageFor(model => model.Soluong, "", new { @style = "color:red" })
                         </div>
                     </div>
                 </div>
@@ -79,7 +80,7 @@
                         @Html.LabelFor(model => model.MaLoaiHang, "MaLoaiHang", new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
                             @Html.DropDownList("MaLoaiHang", String.Empty)
-                            @Html.ValidationMessageFor(model => model.MaLoaiHang)
+                            @Html.ValidationMessageFor(model => model.MaLoaiHang, "", new { @style = "color:red" })
                         </div>
                     </div>
                 </div>
@@ -87,8 +88,7 @@
                     <div class="form-group">
                         @Html.LabelFor(model => model.NgayNhap, new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
-                            @Html.EditorFor(model => model.NgayNhap)
-                            @Html.ValidationMessageFor(model => model.NgayNhap)
+                           <input type="text" name="ngayNhap"/>
                         </div>
                     </div>
                 </div>
@@ -98,7 +98,7 @@
                         @Html.LabelFor(model => model.ManHinh, new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
                             @Html.EditorFor(model => model.ManHinh)
-                            @Html.ValidationMessageFor(model => model.ManHinh)
+                            @Html.ValidationMessageFor(model => model.ManHinh, "", new { @style = "color:red" })
                         </div>
                     </div>
                 </div>
@@ -107,7 +107,7 @@
                         @Html.LabelFor(model => model.Ram, new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
                             @Html.EditorFor(model => model.Ram)
-                            @Html.ValidationMessageFor(model => model.Ram)
+                            @Html.ValidationMessageFor(model => model.Ram, "", new { @style = "color:red" })
                         </div>
                     </div>
                 </div>
@@ -116,7 +116,7 @@
                         @Html.LabelFor(model => model.CameraT, new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
                             @Html.EditorFor(model => model.CameraT)
-                            @Html.ValidationMessageFor(model => model.CameraT)
+                            @Html.ValidationMessageFor(model => model.CameraT, "", new { @style = "color:red" })
                         </div>
                     </div>
                 </div>
@@ -126,7 +126,7 @@
                         @Html.LabelFor(model => model.CameraS, new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
                             @Html.EditorFor(model => model.CameraS)
-                            @Html.ValidationMessageFor(model => model.CameraS)
+                            @Html.ValidationMessageFor(model => model.CameraS, "", new { @style = "color:red" })
                         </div>
                     </div>
                 </div>
@@ -135,7 +135,7 @@
                         @Html.LabelFor(model => model.Cpu, new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
                             @Html.EditorFor(model => model.Cpu)
-                            @Html.ValidationMessageFor(model => model.Cpu)
+                            @Html.ValidationMessageFor(model => model.Cpu, "", new { @style = "color:red" })
                         </div>
                     </div>
                 </div>
@@ -144,7 +144,7 @@
                         @Html.LabelFor(model => model.Gpu, new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
                             @Html.EditorFor(model => model.Gpu)
-                            @Html.ValidationMessageFor(model => model.Gpu)
+                            @Html.ValidationMessageFor(model => model.Gpu, "", new { @style = "color:red" })
                         </div>
                     </div>
                 </div>
@@ -153,7 +153,7 @@
                         @Html.LabelFor(model => model.BoNho, new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
                             @Html.EditorFor(model => model.BoNho)
-                            @Html.ValidationMessageFor(model => model.BoNho)
+                            @Html.ValidationMessageFor(model => model.BoNho, "", new { @style = "color:red" })
                         </div>
                     </div>
                 </div>
@@ -162,7 +162,7 @@
                         @Html.LabelFor(model => model.DungLuongPin, new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
                             @Html.EditorFor(model => model.DungLuongPin)
-                            @Html.ValidationMessageFor(model => model.DungLuongPin)
+                            @Html.ValidationMessageFor(model => model.DungLuongPin, "", new { @style = "color:red" })
                         </div>
                     </div>
                 </div>
@@ -181,6 +181,14 @@
             
  
  
-   
-    </div>
+            <script type="text/javascript">
+                $(document).ready(
+                    function () {
+                        $('.datepicker').datepicker({
+                            changeMonth: true,
+                            changeYear: true,
+                            minDate: "-99Y",
+                            dateFormat: "dd/mm/yyyy"
+                        });
+                    });</script></div>
     </div>

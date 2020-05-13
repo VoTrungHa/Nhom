@@ -57,9 +57,13 @@ namespace Nhom.Areas.admin.Controllers
                 //Lấy thông tin từ input type=file có tên Avatar
                 string postedFileName = System.IO.Path.GetFileName(imgNV.FileName);
                 //Lưu hình đại diện về Server
+                var ngay =Request["ngayNhap"];
                 var path = Server.MapPath("/Images/" + postedFileName);
                 imgNV.SaveAs(path);
-
+                
+                DateTime ngaynhap = DateTime.Parse(ngay);
+                
+                mathang.NgayNhap = ngaynhap;
                 mathang.Image = postedFileName;
                 db.MatHangs.Add(mathang);
                 db.SaveChanges();

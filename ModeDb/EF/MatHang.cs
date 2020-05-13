@@ -27,13 +27,15 @@
 
         public decimal? GiaKhuyenMai { get; set; }
         [Required(ErrorMessage = "Chưa nhập số lượng")]
-        public int? Soluong { get; set; }
-        
+        public int? Soluong { get; set; } 
         [StringLength(50)]
         public string MaLoaiHang { get; set; } 
         [Column(TypeName = "date")]
-        public DateTime? NgayNhap { get; set; }
 
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
+        public DateTime? NgayNhap { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         [Column(TypeName = "date")]
         public DateTime? NgaySuaDoi { get; set; }
         [Required(ErrorMessage = "Chưa chọn avatar")]
