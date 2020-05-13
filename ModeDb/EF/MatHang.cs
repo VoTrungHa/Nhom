@@ -23,6 +23,8 @@
         [StringLength(100)]
         public string TenMh { get; set; }
         [Required(ErrorMessage = "Chưa nhập Giá thành")]
+         
+        
         public decimal? GiaThanh { get; set; }
 
         public decimal? GiaKhuyenMai { get; set; }
@@ -30,12 +32,15 @@
         public int? Soluong { get; set; } 
         [StringLength(50)]
         public string MaLoaiHang { get; set; } 
+       
+        [DataType(DataType.Date,ErrorMessage="ngày tháng không hợp lệ")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         [Column(TypeName = "date")]
-
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         public DateTime? NgayNhap { get; set; }
-        [DataType(DataType.Date)]
+
+        [DataType(DataType.Date, ErrorMessage = "ngày tháng không hợp lệ")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
+        
         [Column(TypeName = "date")]
         public DateTime? NgaySuaDoi { get; set; }
         [Required(ErrorMessage = "Chưa chọn avatar")]

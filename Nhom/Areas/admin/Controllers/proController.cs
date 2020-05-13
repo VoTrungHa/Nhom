@@ -51,29 +51,48 @@ namespace Nhom.Areas.admin.Controllers
         public ActionResult Create([Bind(Include="MaMH,TenMh,GiaThanh,GiaKhuyenMai,Soluong,MaLoaiHang,NgaySuaDoi,Image,status,ManHinh,Ram,CameraT,CameraS,Cpu,Gpu,BoNho,DungLuongPin")] MatHang mathang)
         {
             
-            if (ModelState.IsValid)
-            {
+           
+               
                 var imgNV = Request.Files["Image"];
                 //Lấy thông tin từ input type=file có tên Avatar
                 string postedFileName = System.IO.Path.GetFileName(imgNV.FileName);
                 //Lưu hình đại diện về Server
-                var ngay =Request["ngayNhap"];
                 var path = Server.MapPath("/Images/" + postedFileName);
-                imgNV.SaveAs(path);
+                string ngay = Request["ngayNhap"];
+                if (postedFileName.Length>0)
+                {
+                    imgNV.SaveAs(path); 
+                   
+                   if(ngay.Length>0)
+                   {
+                       if (ModelState.IsValid)
+                       {
+                       DateTime ngaynhap = DateTime.Parse(ngay); 
+                       mathang.NgayNhap = ngaynhap;
+                       mathang.Image = postedFileName;
+                       db.MatHangs.Add(mathang);
+                       db.SaveChanges();
+                       ModelState.AddModelError("", "Thêm thành công");
+                       }
+                       else
+                       {
+                           ModelState.AddModelError("", "Thêm không thành công");
+                       }
+                   }
+                    else
+                   {
+                       ModelState.AddModelError("", "Ngày nhập sản phẩm còn trống !");
+                   }
+                   
+                    
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Chưa có một ảnh mô tả sản phẩm");
+                }
                 
-                DateTime ngaynhap = DateTime.Parse(ngay);
-                
-                mathang.NgayNhap = ngaynhap;
-                mathang.Image = postedFileName;
-                db.MatHangs.Add(mathang);
-                db.SaveChanges();
-                ModelState.AddModelError("", "Thêm thành công");
                 //return RedirectToAction("Index");
-            }
-            else
-            {
-                ModelState.AddModelError("", "Thêm không thành công");
-            }
+           
 
             ViewBag.MaLoaiHang = new SelectList(db.LoaiMatHangs, "MaLoaiHang", "TenLoaiMH", mathang.MaLoaiHang);
             return View(mathang);
@@ -102,12 +121,36 @@ namespace Nhom.Areas.admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include="MaMH,TenMh,GiaThanh,GiaKhuyenMai,Soluong,MaLoaiHang,NgayNhap,NgaySuaDoi,Image,status,ManHinh,Ram,CameraT,CameraS,Cpu,Gpu,BoNho,DungLuongPin,luotXem,link")] MatHang mathang)
         {
-            if (ModelState.IsValid)
-            {
-                db.Entry(mathang).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+            string ngay = Request["ngaysuadoi"];
+           if(ngay.Length>0)
+           {
+               if (ModelState.IsValid)
+               {
+                   var imgNV = Request.Files["Image"]; 
+                   //Lấy thông tin từ input type=file có tên Avatar
+                   string postedFileName = System.IO.Path.GetFileName(imgNV.FileName);
+                  if(postedFileName.Length>0)
+                  {
+                      var path = Server.MapPath("/Images/" + postedFileName);
+                      imgNV.SaveAs(path); 
+                      mathang.Image = postedFileName; 
+                  } 
+                   DateTime ngaysua = DateTime.Parse(ngay);
+                   mathang.NgaySuaDoi = ngaysua;
+                   db.Entry(mathang).State = EntityState.Modified;
+                   db.SaveChanges();
+                   ModelState.AddModelError("", "Chỉnh sửa thành Công");
+               }
+               else
+               {
+                   ModelState.AddModelError("", "Chỉnh sửa Không thành Công");
+               }
+           }
+           else
+           {
+               ModelState.AddModelError("", "Ngày Chỉnh sửa còn trống");
+           }
+            
             ViewBag.MaLoaiHang = new SelectList(db.LoaiMatHangs, "MaLoaiHang", "TenLoaiMH", mathang.MaLoaiHang);
             return View(mathang);
         }

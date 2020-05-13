@@ -89,6 +89,8 @@
                         @Html.LabelFor(model => model.NgayNhap, new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
                            <input type="text" name="ngayNhap"/>
+                            @Html.ValidationMessageFor(model => model.NgayNhap, "", new { @style = "color:red" })
+                            
                         </div>
                     </div>
                 </div>
@@ -177,18 +179,6 @@
         </div>
     
                 }
-
-            
- 
- 
-            <script type="text/javascript">
-                $(document).ready(
-                    function () {
-                        $('.datepicker').datepicker({
-                            changeMonth: true,
-                            changeYear: true,
-                            minDate: "-99Y",
-                            dateFormat: "dd/mm/yyyy"
-                        });
-                    });</script></div>
+             
+  </div>
     </div>
