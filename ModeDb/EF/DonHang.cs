@@ -20,6 +20,8 @@ namespace ModeDb.EF
 
         public long MaKH { get; set; }
 
+        public long MaNV { get; set; }
+
         public DateTime? NgayDH { get; set; }
 
         public DateTime? NgayGH { get; set; }
@@ -33,5 +35,7 @@ namespace ModeDb.EF
         public virtual ICollection<ChiTietDonHang> ChiTietDonHangs { get; set; }
 
         public virtual KhachHang KhachHang { get; set; }
+
+        public virtual NhanVien NhanVien { get; set; }
     }
 }

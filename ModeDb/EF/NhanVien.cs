@@ -6,33 +6,31 @@ namespace ModeDb.EF
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("KhachHang")]
-    public partial class KhachHang
+    [Table("NhanVien")]
+    public partial class NhanVien
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public KhachHang()
+        public NhanVien()
         {
             DonHangs = new HashSet<DonHang>();
         }
 
         [Key]
-        public long MaKH { get; set; }
+        public long MaNV { get; set; }
 
-        [StringLength(150)]
-        public string TenKH { get; set; }
-
-        [StringLength(150)]
-        public string Diachi { get; set; }
-
-        [StringLength(12)]
-        public string SoDT { get; set; }
+        [StringLength(50)]
+        public string TenNV { get; set; }
 
         [StringLength(100)]
+        public string DiaChi { get; set; }
+
+        [StringLength(20)]
+        public string SoDT { get; set; }
+
+        [StringLength(10)]
         public string Email { get; set; }
 
         public long IDUser { get; set; }
-
-        public virtual DanhGia DanhGia { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DonHang> DonHangs { get; set; }

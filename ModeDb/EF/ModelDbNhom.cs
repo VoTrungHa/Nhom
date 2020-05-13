@@ -19,6 +19,7 @@ namespace ModeDb.EF
         public virtual DbSet<KhachHang> KhachHangs { get; set; }
         public virtual DbSet<LoaiMatHang> LoaiMatHangs { get; set; }
         public virtual DbSet<MatHang> MatHangs { get; set; }
+        public virtual DbSet<NhanVien> NhanViens { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<User> Users { get; set; }
 
@@ -63,10 +64,6 @@ namespace ModeDb.EF
 
             modelBuilder.Entity<KhachHang>()
                 .Property(e => e.Email)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<KhachHang>()
-                .Property(e => e.Avatar)
                 .IsUnicode(false);
 
             modelBuilder.Entity<KhachHang>()
@@ -120,6 +117,19 @@ namespace ModeDb.EF
                 .WithRequired(e => e.MatHang)
                 .WillCascadeOnDelete(false);
 
+            modelBuilder.Entity<NhanVien>()
+                .Property(e => e.SoDT)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<NhanVien>()
+                .Property(e => e.Email)
+                .IsFixedLength();
+
+            modelBuilder.Entity<NhanVien>()
+                .HasMany(e => e.DonHangs)
+                .WithRequired(e => e.NhanVien)
+                .WillCascadeOnDelete(false);
+
             modelBuilder.Entity<User>()
                 .Property(e => e.Email)
                 .IsUnicode(false);
@@ -138,6 +148,11 @@ namespace ModeDb.EF
 
             modelBuilder.Entity<User>()
                 .HasMany(e => e.KhachHangs)
+                .WithRequired(e => e.User)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<User>()
+                .HasMany(e => e.NhanViens)
                 .WithRequired(e => e.User)
                 .WillCascadeOnDelete(false);
         }

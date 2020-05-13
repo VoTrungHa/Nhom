@@ -1,0 +1,132 @@
+﻿@model IEnumerable<ModeDb.EF.MatHang>
+
+@{
+    Layout = null;
+    Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Image)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LoaiMatHang.TenLoaiMH)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TenMh)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GiaThanh)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GiaKhuyenMai)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Soluong)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NgayNhap)
+            </th>
+            
+            <th>
+                @Html.DisplayNameFor(model => model.ManHinh)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ram)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CameraT)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CameraS)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cpu)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gpu)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BoNho)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DungLuongPin)
+            </th>
+            
+            
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                <img src="~/Images/@item.Image" style="width:75px;height:50px"/>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LoaiMatHang.TenLoaiMH)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenMh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GiaThanh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GiaKhuyenMai)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Soluong)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayNhap)
+            </td>
+            
+             
+            <td>
+                @Html.DisplayFor(modelItem => item.ManHinh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ram)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CameraT)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CameraS)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cpu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gpu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BoNho)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DungLuongPin)
+            </td>
+            
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.MaMH }) |
+                @Html.ActionLink("Details", "Details", new { id=item.MaMH }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.MaMH })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

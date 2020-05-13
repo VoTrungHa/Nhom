@@ -13,33 +13,36 @@
         public User()
         {
             KhachHangs = new HashSet<KhachHang>();
+            NhanViens = new HashSet<NhanVien>();
         }
 
         [Key]
         public long IDUser { get; set; }
 
-        [Required(ErrorMessage = "Bạn chưa nhập Email")]
+        [Required(ErrorMessage="Chưa Nhập Email")]
         [StringLength(100)]
         public string Email { get; set; }
-        [Required(ErrorMessage = "Bạn chưa nhập Họ Tên")]
+
         [StringLength(50)]
         public string HoTen { get; set; }
-        [Required(ErrorMessage = "bạn chưa nhập số điện thoại")]
+
         [StringLength(12)]
         public string Phone { get; set; }
-        [Required(ErrorMessage = "bạn chưa nhập mật khẩu")]
+
         [StringLength(150)]
         public string PassWord { get; set; }
-        [Required(ErrorMessage = "bạn chưa nhập lại mật khẩu")]
 
         [StringLength(150)]
         public string RePassWord { get; set; }
 
-        public bool Status { get; set; }
+        public bool? Status { get; set; }
 
         public bool? Admin { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<KhachHang> KhachHangs { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<NhanVien> NhanViens { get; set; }
     }
 }
