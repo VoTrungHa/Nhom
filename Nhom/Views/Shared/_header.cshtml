@@ -60,7 +60,7 @@
     <div class="row">
         <div class="col-md-4 col-sm-12">
             <div class="row">
-                <div class="col-md-4"><h1 id="home">Phone</h1></div>
+                <div class="col-md-4"> @Html.ActionLink("IPhone", "Index", "Home", new { @id = "home" } )</div>
                 <div class="col-md-8">
                     @using (@Html.BeginForm("Search", "Idenx", FormMethod.Post, new { @class = "form-group" }))
                     {
@@ -97,8 +97,22 @@
                     <li id="nav_header"><a class="nav-link" style="color:#ffffff;font-size:15px" href="#">Liên Hệ <i class="fas fa-chalkboard-teacher fa-2x" id="nav_header_item"></i></a></li>
                 </ul>
                 <ul class="nav mt-2">
-                    <li id="nav_header"><a class="nav-link" style="color:#ffffff;font-size:15px" href="/admin/UserLogin/Index">Đăng Nhập <i class="fas fa-sign-in-alt fa-2x" id="nav_header_item"></i></a></li>
-                    <li id="nav_header"><a class="nav-link" style="color:#ffffff;font-size:15px" href="#">Đăng Xuất <i class="fas fa-sign-out-alt fa-2x" id="nav_header_item"></i></a></li>
+                    @{
+                        var sesstion = (Nhom.Common.UserSection)Session[Nhom.Common.CommonContact.USER_SESSION];
+                    }
+                    @if(sesstion!=null)
+                    {
+                        if(sesstion.Admin==true)
+                        {
+                            <li id="nav_header"><a class="nav-link" style="color:#ffffff;font-size:15px" href="/admin/home">Doanh Thu<i class="fas fa-sign-in-alt fa-2x" id="nav_header_item"></i></a></li>
+                        } 
+                    }
+                    else
+                    {
+                         <li id="nav_header"><a class="nav-link" style="color:#ffffff;font-size:15px" href="/admin/UserLogin/Index">Đăng Nhập <i class="fas fa-sign-in-alt fa-2x" id="nav_header_item"></i></a></li>
+                    }
+                   
+                    <li id="nav_header"><a class="nav-link" style="color:#ffffff;font-size:15px" href="/admin/UserLogin/logOut">Đăng Xuất <i class="fas fa-sign-out-alt fa-2x" id="nav_header_item"></i></a></li>
 
                 </ul>
 

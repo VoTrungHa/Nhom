@@ -1,4 +1,5 @@
-﻿using ModeDb.EF;
+﻿using ModeDb.common;
+using ModeDb.EF;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,41 +28,87 @@ namespace ModeDb.DB
             db.SaveChanges();
             return model.Email;
         }
+ 
+        public List<string>GetListCredential(string Email)
+        {
+            var user = db.Users.Single(x => x.Email == Email);// lấy email vưa đăng nhập
 
+            var data =
+            (from a in db.Groups
+             join b in db.Redentials on a.ID equals b.UserGroupID
+             where user.Email == user.Email
+             join c in db.Roles on b.RoleID equals c.ID 
+             select new { groupID = a.ID, RoleID = c.ID });
+            return data.Select(x => x.RoleID).ToList();
+            //var data = (from a in db.Groups//
+            //            join b in db.Redentials on a.ID equals b.UserGroupID
+            //            join c in db.Roles on b.RoleID equals c.ID // join các bản quyền với nhau
+            //            where a.ID == user.IDGroup// xem email này thuộc quyền nào
+            //            select new 
+            //            {
+            //                RoleID = c.ID,
+            //                UserGroupID = a.ID
+            //            }).AsEnumerable().Select(x => new Redential()
+            //           {
+            //               RoleID=x.RoleID,
+            //               UserGroupID=x.UserGroupID
+            //           });
+            //return data.Select(x => x.RoleID).ToList();
+        }
+
+        // phan quyen
         public int LoginUser(string Email, string passWord)
         {
             var result = db.Users.SingleOrDefault(x => x.Email == Email);
             if (result == null)
             {
-                return 0;
+                return 0;// không tồn tại
             }
             else
-            {
-                if (result.Status == false)
-                {
-                    return -1;
-                }
-                else
-                {
-                    if (result.PassWord == passWord)
+            { 
+                    if(result.IDGroup==commonContants.ADMIN || result.IDGroup==commonContants.MEMBER)
                     {
-                        
-                        if(result.Admin==true)
+                        if (result.Status == false)
                         {
-                            return 1;
+                            return -1;// khóa
                         }
                         else
                         {
-                            return 2;
+                            if (result.PassWord == passWord)
+                            { 
+                                    return 1; 
+                            }
+                            else
+                            {
+                                return -2;// sai pass
+                            }
                         }
-
                     }
                     else
                     {
-                        return -2;
+                        if (result.Status == false)
+                        {
+                            return -1;
+                        }
+                        else
+                        {
+                            if (result.PassWord == passWord)
+                            {
+                                return 3;
+                            }
+                            else
+                            {
+                                return -2;
+                            }
+                        }
                     }
-                }
+                
+                 
+                     
+                
             }
+             
         }
     }
 }
+ // phan quyền

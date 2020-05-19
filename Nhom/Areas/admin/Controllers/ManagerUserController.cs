@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ModeDb.EF;
+using Nhom.Common;
 
 namespace Nhom.Areas.admin.Controllers
 {
@@ -15,6 +16,7 @@ namespace Nhom.Areas.admin.Controllers
         private ModelDbNhom db = new ModelDbNhom();
 
         // GET: /admin/ManagerUser/
+        [HasCredentialAttb(ID = "VIEW_USER")]
         public ActionResult Index()
         {
              
@@ -37,6 +39,7 @@ namespace Nhom.Areas.admin.Controllers
         }
 
         // GET: /admin/ManagerUser/Create
+        [HasCredentialAttb(ID = "ADD_USER")]
         public ActionResult Create()
         {
             return View();
@@ -60,6 +63,7 @@ namespace Nhom.Areas.admin.Controllers
         }
 
         // GET: /admin/ManagerUser/Edit/5
+        [HasCredentialAttb(ID = "EDIT")]
         public ActionResult Edit(long? id)
         {
             if (id == null)
@@ -91,6 +95,7 @@ namespace Nhom.Areas.admin.Controllers
         }
 
         // GET: /admin/ManagerUser/Delete/5
+        [HasCredentialAttb(ID = "DELETE_USER")]
         public ActionResult Delete(long? id)
         {
             if (id == null)

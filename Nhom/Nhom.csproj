@@ -1932,6 +1932,7 @@
     <Compile Include="Areas\admin\Models\UserLoginModel.cs" />
     <Compile Include="Common\CommonContact.cs" />
     <Compile Include="Common\Encryptor.cs" />
+    <Compile Include="Common\HasCredentialAttb.cs" />
     <Compile Include="Common\UserSection.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -1948,6 +1949,7 @@
     <Content Include="Views\Shared\_Caroulse.cshtml" />
     <Content Include="Views\Shared\_HotContent.cshtml" />
     <Content Include="Views\Shared\_LayoutPublic.cshtml" />
+    <Content Include="Views\Shared\401.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

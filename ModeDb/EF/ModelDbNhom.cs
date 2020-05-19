@@ -16,10 +16,13 @@ namespace ModeDb.EF
         public virtual DbSet<Content> Contents { get; set; }
         public virtual DbSet<DanhGia> DanhGias { get; set; }
         public virtual DbSet<DonHang> DonHangs { get; set; }
+        public virtual DbSet<Group> Groups { get; set; }
         public virtual DbSet<KhachHang> KhachHangs { get; set; }
         public virtual DbSet<LoaiMatHang> LoaiMatHangs { get; set; }
         public virtual DbSet<MatHang> MatHangs { get; set; }
         public virtual DbSet<NhanVien> NhanViens { get; set; }
+        public virtual DbSet<Redential> Redentials { get; set; }
+        public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<User> Users { get; set; }
 
@@ -58,6 +61,10 @@ namespace ModeDb.EF
                 .WithRequired(e => e.DonHang)
                 .WillCascadeOnDelete(false);
 
+            modelBuilder.Entity<Group>()
+                .Property(e => e.ID)
+                .IsUnicode(false);
+
             modelBuilder.Entity<KhachHang>()
                 .Property(e => e.SoDT)
                 .IsUnicode(false);
@@ -65,10 +72,6 @@ namespace ModeDb.EF
             modelBuilder.Entity<KhachHang>()
                 .Property(e => e.Email)
                 .IsUnicode(false);
-
-            modelBuilder.Entity<KhachHang>()
-                .HasOptional(e => e.DanhGia)
-                .WithRequired(e => e.KhachHang);
 
             modelBuilder.Entity<KhachHang>()
                 .HasMany(e => e.DonHangs)
@@ -81,6 +84,10 @@ namespace ModeDb.EF
 
             modelBuilder.Entity<MatHang>()
                 .Property(e => e.GiaThanh)
+                .HasPrecision(18, 0);
+
+            modelBuilder.Entity<MatHang>()
+                .Property(e => e.GiaKhuyenMai)
                 .HasPrecision(18, 0);
 
             modelBuilder.Entity<MatHang>()
@@ -117,6 +124,11 @@ namespace ModeDb.EF
                 .WithRequired(e => e.MatHang)
                 .WillCascadeOnDelete(false);
 
+            modelBuilder.Entity<MatHang>()
+                .HasMany(e => e.DanhGias)
+                .WithRequired(e => e.MatHang)
+                .WillCascadeOnDelete(false);
+
             modelBuilder.Entity<NhanVien>()
                 .Property(e => e.SoDT)
                 .IsUnicode(false);
@@ -129,6 +141,22 @@ namespace ModeDb.EF
                 .HasMany(e => e.DonHangs)
                 .WithRequired(e => e.NhanVien)
                 .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Redential>()
+                .Property(e => e.UserGroupID)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Redential>()
+                .Property(e => e.RoleID)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Role>()
+                .Property(e => e.ID)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<User>()
+                .Property(e => e.IDGroup)
+                .IsUnicode(false);
 
             modelBuilder.Entity<User>()
                 .Property(e => e.Email)
@@ -145,6 +173,11 @@ namespace ModeDb.EF
             modelBuilder.Entity<User>()
                 .Property(e => e.RePassWord)
                 .IsUnicode(false);
+
+            modelBuilder.Entity<User>()
+                .HasMany(e => e.DanhGias)
+                .WithRequired(e => e.User)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<User>()
                 .HasMany(e => e.KhachHangs)

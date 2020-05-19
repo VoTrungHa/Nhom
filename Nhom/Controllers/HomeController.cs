@@ -11,6 +11,7 @@ namespace Nhom.Controllers
     {
         //
         // GET: /Home/
+       
         public ActionResult Index()
         {
             return View();
@@ -22,5 +23,6 @@ namespace Nhom.Controllers
             var model = db.getPageListProduct(page, sizePage); 
             return PartialView(model);
         }
+
 	}
 }

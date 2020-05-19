@@ -5,9 +5,11 @@ using System.Web;
 
 namespace Nhom.Common
 {
+    [Serializable]
     public class UserSection
     {
-        public string HoTen { get; set; }
-        public string email { get; set; }
+        public bool? Admin { get; set; }// để biết phân quyên truy cập
+        public string email { get; set; }// lưu email
+        public string IDGroup { get; set; }// cấp bậc quyền
     }
 }

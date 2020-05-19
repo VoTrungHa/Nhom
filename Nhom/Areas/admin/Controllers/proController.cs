@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ModeDb.EF;
+using Nhom.Common;
 
 namespace Nhom.Areas.admin.Controllers
 {
@@ -15,6 +16,7 @@ namespace Nhom.Areas.admin.Controllers
         private ModelDbNhom db = new ModelDbNhom();
 
         // GET: /admin/pro/
+        [HasCredentialAttb(ID = "VIEW_PRO")]
         public ActionResult Index()
         {
             var mathangs = db.MatHangs.Include(m => m.LoaiMatHang);
@@ -22,6 +24,7 @@ namespace Nhom.Areas.admin.Controllers
         }
 
         // GET: /admin/pro/Details/5
+          
         public ActionResult Details(long? id)
         {
             if (id == null)
@@ -37,6 +40,7 @@ namespace Nhom.Areas.admin.Controllers
         }
 
         // GET: /admin/pro/Create
+         [HasCredentialAttb(ID = "ADD_PRO")]
         public ActionResult Create()
         {
             ViewBag.MaLoaiHang = new SelectList(db.LoaiMatHangs, "MaLoaiHang", "TenLoaiMH");
@@ -99,6 +103,7 @@ namespace Nhom.Areas.admin.Controllers
         }
 
         // GET: /admin/pro/Edit/5
+         [HasCredentialAttb(ID = "EDIT_PRO")]
         public ActionResult Edit(long? id)
         {
             if (id == null)
@@ -156,6 +161,7 @@ namespace Nhom.Areas.admin.Controllers
         }
 
         // GET: /admin/pro/Delete/5
+        [HasCredentialAttb(ID = "DELETE_PRO")]
         public ActionResult Delete(long? id)
         {
             if (id == null)

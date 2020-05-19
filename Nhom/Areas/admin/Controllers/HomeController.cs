@@ -1,4 +1,5 @@
 ﻿using ModeDb.EF;
+using Nhom.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,7 @@ namespace Nhom.Areas.admin.Controllers
         {
             return View();
         }
-
+        
         
          
         [ChildActionOnly]

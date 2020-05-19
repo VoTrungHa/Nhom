@@ -10,14 +10,22 @@ namespace ModeDb.EF
     public partial class DanhGia
     {
         [Key]
+        [Column(Order = 0)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public long MaKH { get; set; }
+        public long IDUser { get; set; }
 
         [StringLength(250)]
         public string noiDung { get; set; }
 
         public DateTime? time { get; set; }
 
-        public virtual KhachHang KhachHang { get; set; }
+        [Key]
+        [Column(Order = 1)]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public long MaMH { get; set; }
+
+        public virtual MatHang MatHang { get; set; }
+
+        public virtual User User { get; set; }
     }
 }

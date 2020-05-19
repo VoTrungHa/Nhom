@@ -55,17 +55,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="common\commonContants.cs" />
     <Compile Include="DB\ProductDB.cs" />
     <Compile Include="DB\UserDb.cs" />
     <Compile Include="EF\ChiTietDonHang.cs" />
     <Compile Include="EF\Content.cs" />
     <Compile Include="EF\DanhGia.cs" />
     <Compile Include="EF\DonHang.cs" />
+    <Compile Include="EF\Group.cs" />
     <Compile Include="EF\KhachHang.cs" />
     <Compile Include="EF\LoaiMatHang.cs" />
     <Compile Include="EF\MatHang.cs" />
     <Compile Include="EF\ModelDbNhom.cs" />
     <Compile Include="EF\NhanVien.cs" />
+    <Compile Include="EF\Redential.cs" />
+    <Compile Include="EF\Role.cs" />
     <Compile Include="EF\sysdiagram.cs" />
     <Compile Include="EF\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

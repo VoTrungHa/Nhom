@@ -32,8 +32,6 @@ namespace ModeDb.EF
 
         public long IDUser { get; set; }
 
-        public virtual DanhGia DanhGia { get; set; }
-
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DonHang> DonHangs { get; set; }
 

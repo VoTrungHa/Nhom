@@ -17,6 +17,19 @@ namespace Nhom.Areas.admin.Controllers
         {
             return View();
         }
+        public ActionResult LogOut()
+        { 
+            Session[CommonContact.USER_SESSION] = null;
+            return Redirect("/"); 
+        }
+        public ActionResult LogOutQuanLy()
+        {
+            Session[CommonContact.USER_SESSION] = null;
+            return Redirect("/admin/home"); 
+
+        }
+         
+        
         [HttpPost]
         public ActionResult Index(UserLoginModel model)
         {
@@ -29,15 +42,19 @@ namespace Nhom.Areas.admin.Controllers
                     var user = db.GetUserByEmail(model.Email);
                     var userSesstion = new UserSection();// khỏi tạo lớp để theeo sesstion
                     userSesstion.email = user.Email;// đưa email vào user section 
+                    userSesstion.IDGroup = user.IDGroup;
+                    userSesstion.Admin = user.Admin;
+                    var ListCredential = db.GetListCredential(model.Email);// lấy danh sách quyền
+                    Session.Add(CommonContact.SESTION_CREDENTIAL, ListCredential);// đưa danh sách vào sesstion
                     Session.Add(CommonContact.USER_SESSION, userSesstion);// lưu userSesstion vào
                     
                     if(result==1)
                     {
                         return RedirectToAction("Index", "Home");
                     }
-                    else
+                    else if (result == 3)
                     {
-                         
+                        return Redirect("/");
                     }
                 }
                 else if (result == 0)
@@ -47,7 +64,7 @@ namespace Nhom.Areas.admin.Controllers
                 else if (result == -1)
                 {
                     ModelState.AddModelError("", "Tài Khoản đang bị khóa !");
-                }
+                } 
                 else
                 {
                     ModelState.AddModelError("", "Mật khẩu không đúng !");
