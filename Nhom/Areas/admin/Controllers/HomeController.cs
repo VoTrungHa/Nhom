@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace Nhom.Areas.admin.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         private ModelDbNhom db = new ModelDbNhom();
         //
@@ -17,6 +17,8 @@ namespace Nhom.Areas.admin.Controllers
         {
             return View();
         }
+
+        // xem sản phẩm
         
         
          

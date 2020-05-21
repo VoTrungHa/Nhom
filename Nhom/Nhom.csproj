@@ -1699,6 +1699,7 @@
     <Content Include="assets\client\homeIndex\Content.css" />
     <Content Include="assets\client\homeIndex\DisplayTop.css" />
     <Content Include="assets\client\homeIndex\footer.css" />
+    <Content Include="assets\client\homeIndex\ThanhToan.css" />
     <Content Include="assets\client\shop\icon_shop.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -1923,6 +1924,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\admin\adminAreaRegistration.cs" />
+    <Compile Include="Areas\admin\Controllers\BaseController.cs" />
     <Compile Include="Areas\admin\Controllers\DangKyController.cs" />
     <Compile Include="Areas\admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\admin\Controllers\ManagerUserController.cs" />
@@ -1935,6 +1937,7 @@
     <Compile Include="Common\HasCredentialAttb.cs" />
     <Compile Include="Common\UserSection.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\XemChiTietSPController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1950,6 +1953,9 @@
     <Content Include="Views\Shared\_HotContent.cshtml" />
     <Content Include="Views\Shared\_LayoutPublic.cshtml" />
     <Content Include="Views\Shared\401.cshtml" />
+    <Content Include="Views\Home\SearchSP.cshtml" />
+    <Content Include="Views\Home\ThanhToan.cshtml" />
+    <Content Include="Views\XemChiTietSP\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1959,6 +1965,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\admin\Views\Base\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

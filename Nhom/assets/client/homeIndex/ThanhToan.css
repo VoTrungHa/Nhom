@@ -1,0 +1,57 @@
+﻿ 
+ 
+.form_m{
+	width: 100%;
+    height: calc(1.5em + .75rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+	border: 1px solid #ced4da;
+    border-radius: .25rem;
+}
+.alert{
+	background-color: #e0e0d1;
+}
+.suggest-header {
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+    margin-right: 15px;
+}
+.suggest-header h2 {
+    padding: 0;
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.2;
+    text-align: center;
+}
+.product-content {
+    position:relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #eae9ef;
+}
+.exit
+{
+    position:absolute;
+    top:10px;
+    display:block;
+    right:10px;
+    color:#ff0000;
+    font-size:18px;
+    font-weight: bold;
+}
+.content {
+    width: calc(100% - 110px);
+}
+.text-right {
+     margin-top: -30px; 
+    float: right;
+    text-align: right;
+}
+.text-center{
+	text-align: center;
+}
