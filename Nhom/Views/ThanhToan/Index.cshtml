@@ -2,7 +2,7 @@
     ViewBag.Title = "ThanhToan";
     Layout = "~/Views/Shared/_LayoutPublic.cshtml";
 }
-
+@model List<Nhom.Models.CartChoose>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -39,36 +39,41 @@
 
                 <div class="alert alert-secondary" role="alert">
                     <div class="checkbox">
-                        <label><input type="checkbox"><strong>Thanh Toán Khi Nhận Hàng (COD)</strong></label>
+                        <label><input type="checkbox" checked><strong>Thanh Toán Khi Nhận Hàng (COD)</strong></label>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="section">
                     <div class="suggest-header">
-                        <h2>Đơn hàng (2 sản phẩm)</h2>
+                        <h2>Đơn Hàng ( @Model.Count() sản phẩm )</h2>
                     </div>
 
                     <div class="product-content">
-                        <div class="exit"><a href="#">X</a></div>
+                        
                         <div class="row">
-                            <div class="col-md-4">
+                            @foreach(var item in Model)
+                            {
+                                <div class="col-md-4"> 
                                 <div class="image">
-                                    <img src="https://phonestorewebsite.000webhostapp.com/storage/images/products/1587557416_C5sYA7pn_iphone-11-pro-den-didongviet_1_2.jpg" style="width: 100px;margin-right: 10px;">
+                                    <img src="~/Images/@item.mathang.Image" style="width: 100px;margin-right: 10px;">
                                 </div>
                             </div>
-                            <div class="col-md-8">
+                            <div class="col-md-8" style="position:relative">
+                                <div style="top: 0; right: 33px; position: absolute;"><a href="#">X</a></div>
                                 <div class="content">
-                                    <h3 class="title">IPhone 11 Pro Max</h3>
+                                    <h3 class="title">@item.mathang.TenMh</h3>
                                     <div class="price">
-                                        <strong>33.490.000₫</strong>
+                                        <strong>@item.mathang.GiaThanh</strong>
                                     </div>
                                     <div class="price">
-                                        <p>Số lượng: <strong>33.490.000₫</strong></p>
+                                        <p>Số lượng: <strong>@item.soluong</strong></p>
 
                                     </div>
                                 </div>
                             </div>
+                            }
+                            
                         </div>
                     </div>
 

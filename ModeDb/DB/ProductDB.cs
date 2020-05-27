@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using PagedList;
+ 
 namespace ModeDb.DB
 {
 
@@ -28,11 +29,31 @@ namespace ModeDb.DB
             return db.MatHangs.ToList();
             
         }
+        // xem chi tiet sản phẩm.
          
- 
-           
- 
 
-         
+        public MatHang getProductByID(long? id)
+        {
+            return db.MatHangs.Find(id);
+            
+        } 
+
+        public List<MatHang> ClientSearchPro(string p,string hdh, string giathanh)
+        {
+            if (giathanh == "desc")
+            {
+                return db.MatHangs.Where(x => x.TenMh.Contains(p) || x.MaHDH.Contains(hdh)).OrderByDescending(x => x.GiaThanh).ToList();
+            }
+            else if(giathanh == "asc")
+            {
+                return db.MatHangs.Where(x => x.TenMh.Contains(p) || x.MaHDH.Contains(hdh)).OrderBy (x => x.GiaThanh).ToList();
+            }
+            else
+            {
+                return db.MatHangs.Where(x => x.TenMh.Contains(p) || x.MaHDH.Contains(hdh)).OrderByDescending(x => x.NgayNhap).ToList();
+            }
+            
+        }
+ 
     }
 }

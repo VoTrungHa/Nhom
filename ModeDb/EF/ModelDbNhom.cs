@@ -17,6 +17,7 @@ namespace ModeDb.EF
         public virtual DbSet<DanhGia> DanhGias { get; set; }
         public virtual DbSet<DonHang> DonHangs { get; set; }
         public virtual DbSet<Group> Groups { get; set; }
+        public virtual DbSet<HeDieuHanh> HeDieuHanhs { get; set; }
         public virtual DbSet<KhachHang> KhachHangs { get; set; }
         public virtual DbSet<LoaiMatHang> LoaiMatHangs { get; set; }
         public virtual DbSet<MatHang> MatHangs { get; set; }
@@ -65,6 +66,14 @@ namespace ModeDb.EF
                 .Property(e => e.ID)
                 .IsUnicode(false);
 
+            modelBuilder.Entity<HeDieuHanh>()
+                .Property(e => e.MaHDH)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<HeDieuHanh>()
+                .Property(e => e.TenHDH)
+                .IsUnicode(false);
+
             modelBuilder.Entity<KhachHang>()
                 .Property(e => e.SoDT)
                 .IsUnicode(false);
@@ -111,7 +120,7 @@ namespace ModeDb.EF
                 .IsUnicode(false);
 
             modelBuilder.Entity<MatHang>()
-                .Property(e => e.link)
+                .Property(e => e.MaHDH)
                 .IsUnicode(false);
 
             modelBuilder.Entity<MatHang>()

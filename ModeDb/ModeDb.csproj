@@ -63,6 +63,7 @@
     <Compile Include="EF\DanhGia.cs" />
     <Compile Include="EF\DonHang.cs" />
     <Compile Include="EF\Group.cs" />
+    <Compile Include="EF\HeDieuHanh.cs" />
     <Compile Include="EF\KhachHang.cs" />
     <Compile Include="EF\LoaiMatHang.cs" />
     <Compile Include="EF\MatHang.cs" />

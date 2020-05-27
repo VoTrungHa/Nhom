@@ -1,24 +1,26 @@
-﻿ 
-
+﻿ @model List<Nhom.Models.CartChoose>
  
-
 <div class="shopping">
     <div class="shop_content">
-        <div class="shop_content_item">
-            @Html.ActionLink("x", "exit", new { @Control = "" }, new { @class = "exit_shop" })
+        <div class="shop_content_item"> 
             <div class="row">
-                <div class="col-md-4 ">
-                    <img src="https://phonestorewebsite.000webhostapp.com/storage/images/products/1577117658_BkLuXOv8_samsung-galaxy-note-10-(6).jpg" alt="anh" style="width:100%;height:100%">
+                @foreach(var item in Model)
+                {
+                 <div class="col-md-4" style="position:relative">
+                     @Html.ActionLink("x", "exit", new { @Control = "" }, new { @class = "exit_shop" })
+                    <img src="~/Images/@item.mathang.Image" alt="anh" style="width:100%;height:100%">
                 </div>
                 <div class="col-md-8">
-                    <div class="title"><h3>Ten san pham</h3></div>
-                    <strong>gia thanh</strong>
+                    <div class="title"><h3>@item.mathang.TenMh</h3></div>
+                    <strong>@(item.mathang.GiaThanh.GetValueOrDefault(0)*item.soluong)</strong>
                     <div class="form-group">
                         <button>-</button>
-                        <input type="text" value="1" />
+                        <input type="text" value=@item.soluong />
                         <button>+</button>
                     </div>
                 </div>
+                }
+                
             </div>
         </div>
 
@@ -31,10 +33,10 @@
             </div>
             <div class="col-md-12 mt-2" style="justify-content:space-between; display: flex;">
                 <div class="btn btn-default">
-                    @Html.ActionLink("Thanh Toán", "thanhtoan","Home", new { @Control = "thanhtoan" }, new { @class = "btn_thanhToan" })
+                    @Html.ActionLink("Thanh Toán", "Index", new { @Controller = "ThanhToan" }, new { @class = "btn_thanhToan" })
                 </div>
                 <div class="btn btn-success">
-                    @Html.ActionLink("Giỏi Hàng", "thanhtoan", new { @Control = "thanhtoan" }, new { @class = "btn_thanhToan" })
+                    @Html.ActionLink("Giỏi Hàng", "Index", new { @Controller= "GioHang" }, new { @class = "btn_thanhToan" })
                 </div>
             </div>
         </div>
@@ -53,18 +55,20 @@
         <path d="M431.616,123.732c-2.62-3.923-7.059-6.239-11.776-6.144h-58.368v-1.024C361.476,54.637,311.278,4.432,249.351,4.428     C187.425,4.424,137.22,54.622,137.216,116.549c0,0.005,0,0.01,0,0.015v1.024h-43.52L78.848,50.004     C77.199,43.129,71.07,38.268,64,38.228H0v30.72h51.712l47.616,218.624c1.257,7.188,7.552,12.397,14.848,12.288h267.776     c7.07-0.041,13.198-4.901,14.848-11.776l37.888-151.552C435.799,132.019,434.654,127.248,431.616,123.732z M249.344,197.972     c-44.96,0-81.408-36.448-81.408-81.408s36.448-81.408,81.408-81.408s81.408,36.448,81.408,81.408     C330.473,161.408,294.188,197.692,249.344,197.972z" data-original="#000000" class="active-path" data-old_color="#F8F8F8" fill="#FFFFFF"></path>
         <path d="M237.056,118.1l-28.16-28.672l-22.016,21.504l38.912,39.424c2.836,2.894,6.7,4.55,10.752,4.608     c3.999,0.196,7.897-1.289,10.752-4.096l64.512-60.928l-20.992-22.528L237.056,118.1z" data-original="#000000" class="active-path" data-old_color="#F8F8F8" fill="#FFFFFF"></path>
          </g>
-      </svg> 
+      </svg>
     </div>
     <script>
-            $(document).ready(function () {
+        $(document).ready(function () {
 
-                $(".icon_shop").mouseenter(function () {
-                    $(".shop_content").css({ display: 'block', })
-                });
-                $(".shop_content").mouseleave(function () {
-                    $(".shop_content").css({ display: "none", })
-                });
+            $(".icon_shop").mouseenter(function () {
+                $(".shop_content").css({ display: 'block', })
             });
-        </script>
+            $(".shop_content").mouseleave(function () {
+                $(".shop_content").css({ display: "none", })
+            });
+        });
+    </script>
 </div>
 
+
+ 

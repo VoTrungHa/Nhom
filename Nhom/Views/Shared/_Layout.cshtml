@@ -28,7 +28,7 @@
         @RenderPage("_header.cshtml")
     </header>
     <div class="container body-content">
-       
+        @{ Html.Action("Shopping", "Home");}
         @RenderPage("_Caroulse.cshtml")
         @RenderPage("_HotContent.cshtml") 
         @{Html.RenderAction("ContentMain", "Home");}
@@ -45,7 +45,8 @@
             });
         </script>*@
         @RenderBody()
-        @RenderPage("_Shopping.cshtml");
+       @{ Html.RenderAction("Shopping", "Home");}
+       @* @RenderPage("_Shopping.cshtml");*@
         <hr />
        
     </div>

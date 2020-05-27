@@ -1900,6 +1900,11 @@
     <Content Include="Areas\admin\Views\pro\Details.cshtml" />
     <Content Include="Areas\admin\Views\pro\Edit.cshtml" />
     <Content Include="Areas\admin\Views\pro\Index.cshtml" />
+    <Content Include="Areas\admin\Views\Product\Create.cshtml" />
+    <Content Include="Areas\admin\Views\Product\Delete.cshtml" />
+    <Content Include="Areas\admin\Views\Product\Details.cshtml" />
+    <Content Include="Areas\admin\Views\Product\Edit.cshtml" />
+    <Content Include="Areas\admin\Views\Product\Index.cshtml" />
     <None Include="Scripts\jquery-3.5.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.5.0.js" />
     <Content Include="Scripts\jquery-3.5.0.min.js" />
@@ -1929,6 +1934,7 @@
     <Compile Include="Areas\admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\admin\Controllers\ManagerUserController.cs" />
     <Compile Include="Areas\admin\Controllers\proController.cs" />
+    <Compile Include="Areas\admin\Controllers\ProductController.cs" />
     <Compile Include="Areas\admin\Controllers\UserLoginController.cs" />
     <Compile Include="Areas\admin\Models\ProductModel.cs" />
     <Compile Include="Areas\admin\Models\UserLoginModel.cs" />
@@ -1936,11 +1942,15 @@
     <Compile Include="Common\Encryptor.cs" />
     <Compile Include="Common\HasCredentialAttb.cs" />
     <Compile Include="Common\UserSection.cs" />
+    <Compile Include="Controllers\GioHangController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ThanhToanController.cs" />
     <Compile Include="Controllers\XemChiTietSPController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CartChoose.cs" />
+    <Compile Include="Models\SearchProClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1954,8 +1964,12 @@
     <Content Include="Views\Shared\_LayoutPublic.cshtml" />
     <Content Include="Views\Shared\401.cshtml" />
     <Content Include="Views\Home\SearchSP.cshtml" />
-    <Content Include="Views\Home\ThanhToan.cshtml" />
     <Content Include="Views\XemChiTietSP\Index.cshtml" />
+    <Content Include="Views\ThanhToan\Index.cshtml" />
+    <Content Include="Views\Shared\Shopping.cshtml" />
+    <Content Include="Views\Home\XemChiTietSP.cshtml" />
+    <Content Include="Views\GioHang\Index.cshtml" />
+    <Content Include="Views\Home\ThanhToan.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1966,7 +1980,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\admin\Views\Base\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ModeDb\ModeDb.csproj">

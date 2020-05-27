@@ -18,9 +18,7 @@ namespace Nhom.Areas.admin.Controllers
             return View();
         }
 
-        // xem sản phẩm
-        
-        
+        // xem sản phẩm 
          
         [ChildActionOnly]
         public ActionResult BannerMain()

@@ -1,5 +1,6 @@
 ﻿using ModeDb.DB;
 using ModeDb.EF;
+using Nhom.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,29 +30,40 @@ namespace Nhom.Controllers
 
         // event clieck on product
 
-        public ActionResult XemChiTietSP( )
-        {
-           
-            return View();
-
-            
-        }
-
         // tim kiếm sản phẩm
         public ActionResult SearchSP()
         {
             return View();
         }
-        // thanh toán sản phẩm.
-        public ActionResult ThanhToan()
-        {
-            return View();
-        }
         [HttpPost]
-        public ActionResult ThanhToan(List<DonHang> donhangs)
+        public ActionResult SearchSP(string name, string hdh, string giathanh)
         {
-            return View();
+            name = Request["name"];
+            hdh = Request["hdh"];
+            giathanh = Request["giathanh"];
+            var db = new ProductDB();
+             List<MatHang> mayhang = db.ClientSearchPro(name,hdh,giathanh);
+             return View(mayhang);
+        }
+        [ChildActionOnly]
+        public ActionResult Shopping()
+        {
+            var list = new List<CartChoose>();
+            var cart = Session["CARTSESSION"];
+            if(cart!=null)
+            {
+                list = (List<CartChoose>)cart;
+            }
+              
+            return PartialView(list);
         }
 
+        public ActionResult XemChiTietSP(long? id)
+        {
+            var db = new ProductDB();
+            MatHang mathang = db.getProductByID(id);
+            return View(mathang);
+        }
+  
 	}
 }

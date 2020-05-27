@@ -70,7 +70,7 @@ namespace ModeDb.EF
         public int? luotXem { get; set; }
 
         [StringLength(50)]
-        public string link { get; set; }
+        public string MaHDH { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietDonHang> ChiTietDonHangs { get; set; }
@@ -80,6 +80,8 @@ namespace ModeDb.EF
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DanhGia> DanhGias { get; set; }
+
+        public virtual HeDieuHanh HeDieuHanh { get; set; }
 
         public virtual LoaiMatHang LoaiMatHang { get; set; }
     }

@@ -43,7 +43,7 @@
     <div class="container">
         <!-- Site Content -->
         <div class="site-content">
- 
+
 
             <div class="site-product">
 
@@ -66,8 +66,8 @@
                                                 <div class="image-gallery-0">
 
                                                     <ul id="imageGallery-0">
-                                                        <li> 
-                                                            <img src="~/Images/@Model.Image"/>
+                                                        <li>
+                                                            <img src="~/Images/@Model.Image" />
                                                         </li>
 
                                                     </ul>
@@ -80,34 +80,42 @@
                                             <div class="price-product">
                                                 <div class="product-0">
                                                     <div class="sale-price">@Model.GiaThanh <span>VNĐ</span></div>
-                                                    <div class="status">Tình trạng:@{if(@Model.status==true){<span style="color: #1a2;">Còn hàng</span>}else{<span style="color: #1a2;">hết hàng</span>}}  </div>
+                                                    <div class="status">Tình trạng:@{if (@Model.status == true)
+                                                    {<span style="color: #1a2;">Còn hàng</span>}
+                                                    else
+                                                    {<span style="color: #1a2;">hết hàng</span>}}  </div>
                                                 </div>
-                                                 
+
                                             </div>
 
                                             <div class="form-payment">
-                                                 
-                                                     
-                                                          <div class="row">
-                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                                                            @using (@Html.BeginForm("Index", "ThanhToan"))
-                                                            {
-                                                                <button type="submit" class="btn btn-lg btn-gray"><i class="far fa-money-bill-alt"></i> Mua ngay</button>
-                                                            } 
-                                                           
-                                                        </div>
-                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                                                            <div class="form-center">
-                                                                <button type="button" onclick="minusInput();" class="btn-minus btn-cts">–</button>
-                                                                <input type="text" class="qty input-text" id="qty" name="quantity" size="4" value="1" min="0" max="96" disabled>
-                                                                <button type="button" onclick="plusInput();" class="btn-plus btn-cts">+</button>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                                                            <button type="button" data-role="addtocart" class="btn btn-lg btn-gray btn-cart btn_buy add_to_cart" data-url="https://phonestorewebsite.000webhostapp.com/cart/add"><span class="txt-main"><i class="fa fa-cart-arrow-down padding-right-10"></i> Giỏ hàng</span></button>
+
+                                                @{
+                                                    int soluong = 1;
+                                                }
+                                                <div class="row">
+                                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                                        <a href="/GioHang/Index?MaMH=@Model.MaMH&soluong=1">
+                                                            <button class="btn btn-lg btn-gray"><i class="far fa-money-bill-alt"></i> Mua ngay</button>
+                                                        </a>
+                                                       
+                                                    </div>
+                                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                                        <div class="form-center">
+                                                            <button type="button" onclick="minusInput();" class="btn-minus btn-cts">–</button>
+                                                            <input type="text" class="qty input-text" id="qty" name="soluong" size="4" value=@soluong min="0" max="96" disabled>
+                                                            <button type="button" onclick="plusInput();" class="btn-plus btn-cts">+</button>
                                                         </div>
                                                     </div>
-                                                
+                                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                                        
+                                                        <a href="/GioHang/AddCart?MaMH=@Model.MaMH&soluong=1">
+                                                            <button class="btn btn-lg btn-gray"><i class="fa fa-cart-arrow-down padding-right-10"></i> Thêm Giỏ hàng</button>
+                                                        </a>
+                                                     
+                                                    </div>
+                                                </div>
+
                                             </div>
                                         </div>
                                     </div>
@@ -195,7 +203,7 @@
                                                 <li><label>Hệ Điều Hành:</label>@Model.MaHDH</li>
                                             </ul>
                                         </div>
-                                        
+
                                     </div>
                                     <div class="suggest-product">
                                         <div class="suggest-header">

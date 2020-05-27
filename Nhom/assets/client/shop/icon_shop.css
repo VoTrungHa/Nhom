@@ -20,20 +20,18 @@
     padding: 1rem 1rem;
 }
 .shop_content_item
-{
-    position:relative;
+{ 
     display: block;
     padding: 1rem 0.1rem;
     border-bottom: 1px dotted #808080;
     
 }
 .exit_shop
-{
-    
+{ 
     position:absolute;
     top:0px;
     font-size:20px;
-    right:10px;
+    right:-220px;
     cursor: pointer;
 }
 .shop_content .shop_content_item .form-group button

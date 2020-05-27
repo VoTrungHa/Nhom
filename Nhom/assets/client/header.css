@@ -9,12 +9,14 @@
      box-shadow:1px 5px 5px #808080; 
      
  }
+ 
 #home
  {
      font-size:34px;
      font-weight:500;
      margin-top:5px;
      color:#ffffff;
+     list-style:none;
  }
  #search
  {

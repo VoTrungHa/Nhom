@@ -65,7 +65,7 @@ namespace ModeDb.DB
                 return 0;// không tồn tại
             }
             else
-            { 
+            {       // nhân viên và chủ cửa hàng đăng nhập
                     if(result.IDGroup==commonContants.ADMIN || result.IDGroup==commonContants.MEMBER)
                     {
                         if (result.Status == false)
@@ -84,7 +84,7 @@ namespace ModeDb.DB
                             }
                         }
                     }
-                    else
+                    else// khách hàng đăng nhập
                     {
                         if (result.Status == false)
                         {
