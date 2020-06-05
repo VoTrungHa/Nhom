@@ -44,6 +44,8 @@ namespace Nhom.Areas.admin.Controllers
                     userSesstion.email = user.Email;// đưa email vào user section 
                     userSesstion.IDGroup = user.IDGroup;
                     userSesstion.Admin = user.Admin;
+                    userSesstion.IDUser = user.IDUser;
+                    userSesstion.name = user.HoTen;
                     var ListCredential = db.GetListCredential(model.Email);// lấy danh sách quyền
                     Session.Add(CommonContact.SESTION_CREDENTIAL, ListCredential);// đưa danh sách vào sesstion
                     Session.Add(CommonContact.USER_SESSION, userSesstion);// lưu userSesstion vào

@@ -38,8 +38,8 @@ namespace ModeDb.EF
                 .HasPrecision(18, 0);
 
             modelBuilder.Entity<ChiTietDonHang>()
-                .Property(e => e.Image)
-                .IsUnicode(false);
+                .Property(e => e.Tongtien)
+                .HasPrecision(18, 0);
 
             modelBuilder.Entity<Content>()
                 .Property(e => e.GiaThanh)
@@ -145,11 +145,6 @@ namespace ModeDb.EF
             modelBuilder.Entity<NhanVien>()
                 .Property(e => e.Email)
                 .IsFixedLength();
-
-            modelBuilder.Entity<NhanVien>()
-                .HasMany(e => e.DonHangs)
-                .WithRequired(e => e.NhanVien)
-                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Redential>()
                 .Property(e => e.UserGroupID)

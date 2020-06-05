@@ -109,6 +109,14 @@ namespace ModeDb.DB
             }
              
         }
+
+        public long getNewDonHang(long p1, bool p2)
+        {
+            var datas = (from a in db.DonHangs
+                        where a.MaKH == p1 && a.status == true
+                        select new {SoHoaDon=a.SoHoaDon,NgayNhap=a.NgayDH }).OrderByDescending(x=>x.NgayNhap);
+            return datas.Select(x=>x.SoHoaDon).First();
+        }
     }
 }
  // phan quyền

@@ -39,7 +39,7 @@ namespace ModeDb.EF
         [StringLength(150)]
         public string RePassWord { get; set; }
 
-        public bool Status { get; set; }
+        public bool? Status { get; set; }
 
         public bool? Admin { get; set; }
 

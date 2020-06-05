@@ -42,18 +42,33 @@ namespace ModeDb.DB
         {
             if (giathanh == "desc")
             {
-                return db.MatHangs.Where(x => x.TenMh.Contains(p) || x.MaHDH.Contains(hdh)).OrderByDescending(x => x.GiaThanh).ToList();
+                return db.MatHangs.Where(x => x.TenMh.Contains(p) || x.MaHDH==hdh).OrderByDescending(x => x.GiaThanh).ToList();
             }
             else if(giathanh == "asc")
             {
-                return db.MatHangs.Where(x => x.TenMh.Contains(p) || x.MaHDH.Contains(hdh)).OrderBy (x => x.GiaThanh).ToList();
+                return db.MatHangs.Where(x => x.TenMh.Contains(p) || x.MaHDH == hdh).OrderBy(x => x.GiaThanh).ToList();
             }
             else
+                if(hdh!=null)
+                {
+                    return db.MatHangs.Where(x => x.MaHDH == hdh).OrderBy(x => x.NgayNhap).ToList();
+                }
+            else
             {
-                return db.MatHangs.Where(x => x.TenMh.Contains(p) || x.MaHDH.Contains(hdh)).OrderByDescending(x => x.NgayNhap).ToList();
+                return db.MatHangs.Where(x => x.TenMh.Contains(p) || x.MaHDH == hdh).OrderByDescending(x => x.NgayNhap).ToList();
             }
             
         }
- 
+
+
+
+        public List<ChiTietDonHang> getProbyId(long? id)
+        {
+            var data = (from a in db.ChiTietDonHangs
+                        where a.SoHoaDon == id
+                        select a
+                          ).ToList();
+            return data;
+        }
     }
 }

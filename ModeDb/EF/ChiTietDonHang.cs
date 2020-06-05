@@ -25,8 +25,7 @@ namespace ModeDb.EF
 
         public decimal? MucGiamGia { get; set; }
 
-        [StringLength(150)]
-        public string Image { get; set; }
+        public decimal? Tongtien { get; set; }
 
         public virtual DonHang DonHang { get; set; }
 

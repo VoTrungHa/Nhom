@@ -1,6 +1,7 @@
 ﻿@{
     ViewBag.Title = "ThanhToan";
     Layout = "~/Views/Shared/_LayoutPublic.cshtml";
+    double tongtien = 0;
 }
 @model List<Nhom.Models.CartChoose>
 
@@ -15,31 +16,46 @@
 <body>
     <div class="container" style="background:#ffffff;border-radius:10px; margin-top:1.7rem">
         <h1 style="color: darkblue">PhoneStore</h1>
+        <p style="color:red;font-size:24px;">@TempData["thanhtoan"]</p>
+             @using(Html.BeginForm("Index","ThanhToan",FormMethod.Post))
+                {
+                   
+                    @Html.AntiForgeryToken()
+                    
         <div class="row">
-            <div class="col-md-4">
-                <form action="/action_page.php">
-                    <h3><p class="text-center">Thông Tin Mua Hàng</p></h3>
-                    <strong><label for="fname">Email</label></strong><br>
-                    <input type="text" class="form_m" id="fname" name="fname"><br>
-                    <strong><label for="lname">Họ và tên:</label></strong></br>
-                    <input type="text" class="form_m" id="lname" name="lname"><br>
-                    <strong><label for="lname">Số điện thoại</label></strong></br>
-                    <input type="text" class="form_m" id="lname" name="lname"><br>
-                    <strong><label for="lname">Địa chỉ:</label></strong></br>
-                    <input type="text" class="form_m" id="lname" name="lname"><br>
-                    <div class="form-group">
-                        <strong><label for="lname">Ghi chú:</label></strong></br>
-                        <textarea class="form-control" rows="5" id="comment"></textarea>
-                    </div>
-
-                </form>
+            <div class="col-md-4"> 
+                <h3 class="text-center">Thông Tin Mua Hàng</h3>
+                <table class="mt-3">
+                    <tr>
+                        <td><strong><label for="fname">Email: </label></strong></td>
+                        <td><input type="email" id="fname" name="email"></td>
+                    </tr>
+                    <tr>
+                        <td><strong><label for="fname">Họ tên Khách: </label></strong></td>
+                        <td><input type="text" id="fname" name="tenkh"></td>
+                    </tr>
+                    <tr>
+                        <td><strong><label for="fname">Số điện thoại: </label></strong></td>
+                        <td><input type="text" id="fname" name="sodt"></td>
+                    </tr>
+                    <tr>
+                        <td><strong><label for="fname">Địa Chỉ: </label></strong></td>
+                        <td><input type="text" id="fname" name="diachi"></td>
+                    </tr>
+                    <tr>
+                        <td><strong><label for="fname">Ghi Chú:  </label></strong></td>
+                        <td><textarea class="form-control" name="ghichu" rows="5"></textarea></td>
+                    </tr>
+                </table>
+                    
+                
             </div>
             <div class="col-md-4">
                 <h3 class="text-center">Phương thức thanh toán</h3>
 
                 <div class="alert alert-secondary" role="alert">
                     <div class="checkbox">
-                        <label><input type="checkbox" checked><strong>Thanh Toán Khi Nhận Hàng (COD)</strong></label>
+                        <label><input type="checkbox" checked name="status" value="true"><strong>Thanh Toán Khi Nhận Hàng (COD)</strong></label>
                     </div>
                 </div>
             </div>
@@ -54,13 +70,14 @@
                         <div class="row">
                             @foreach(var item in Model)
                             {
+                                tongtien = tongtien + (double)@item.soluong * (double)@item.mathang.GiaThanh.GetValueOrDefault(0);
                                 <div class="col-md-4"> 
                                 <div class="image">
                                     <img src="~/Images/@item.mathang.Image" style="width: 100px;margin-right: 10px;">
                                 </div>
                             </div>
                             <div class="col-md-8" style="position:relative">
-                                <div style="top: 0; right: 33px; position: absolute;"><a href="#">X</a></div>
+                                <div style="top: 0; right: 33px; position: absolute;"><a href="/ThanhToan/DeleteCartProduct?MaMH=@item.mathang.MaMH">X</a></div>
                                 <div class="content">
                                     <h3 class="title">@item.mathang.TenMh</h3>
                                     <div class="price">
@@ -82,7 +99,8 @@
                 <div class="border-bottom ml-5">
                     <div>
                         <h4 class="text-muted">Tạm tính</h4>
-                        <span class="text-right"> 24.900.000 VND</span>
+                        <strong>@tongtien</strong>
+                        
                     </div>
                     <div>
                         <h4 class="text-muted">Phí vận chuyển </h4>
@@ -92,18 +110,19 @@
                 <div class="border-bottom ml-5">
 
                     <div class="price">
-                        <p>Tổng Tiền: <strong>33.490.000₫</strong></p>
+                        <p>Tổng Tiền: <strong>@tongtien</strong></p>
 
                     </div>
 
                 </div>
                 <hr />
                 <div class="text-center">
-                    <button type="button" class="btn btn-primary">Đặt Hàng</button>
+                    <button type="submit" class="btn btn-primary">Đặt Hàng</button>
                 </div>
 
             </div>
         </div>
+                }
     </div>
 
 

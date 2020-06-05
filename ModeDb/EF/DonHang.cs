@@ -20,7 +20,7 @@ namespace ModeDb.EF
 
         public long MaKH { get; set; }
 
-        public long MaNV { get; set; }
+        public long? MaNV { get; set; }
 
         public DateTime? NgayDH { get; set; }
 
@@ -30,6 +30,11 @@ namespace ModeDb.EF
         public string NoiGiaoHang { get; set; }
 
         public decimal? TongTien { get; set; }
+
+        [StringLength(150)]
+        public string ghichu { get; set; }
+
+        public bool? status { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietDonHang> ChiTietDonHangs { get; set; }

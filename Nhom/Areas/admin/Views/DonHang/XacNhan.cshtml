@@ -1,0 +1,136 @@
+﻿@model ModeDb.EF.DonHang
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="color:red;text-align:center;font-size:26px">Xác Nhận Đơn Hàng</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+     @Html.ValidationSummary(true)
+            @Html.HiddenFor(model => model.SoHoaDon)
+            @Html.HiddenFor(model => model.status)
+            @Html.HiddenFor(model => model.MaKH)
+            @Html.HiddenFor(model => model.MaNV)
+      <hr />
+    <div class="row">
+        <div class="col-md-6">
+          <div class="row">
+              <div class="col-md-6">
+                  <div class="form-group">
+                      @Html.LabelFor(model => model.KhachHang.TenKH, new { @class = "control-label col-md-2" })
+                      <div class="col-md-10">
+                          @Html.TextBoxFor(model => model.KhachHang.TenKH, new { disabled = "disabled" })
+                          @Html.ValidationMessageFor(model => model.KhachHang.TenKH)
+                      </div>
+                  </div>
+              </div> 
+              <div class="col-md-6">
+                  <div class="form-group">
+                      @Html.LabelFor(model => model.KhachHang.SoDT, new { @class = "control-label col-md-2" })
+                      <div class="col-md-10">
+                          @Html.TextBoxFor(model => model.KhachHang.SoDT, new { disabled = "disabled" })
+                          @Html.ValidationMessageFor(model => model.KhachHang.SoDT)
+                      </div>
+                  </div>
+              </div>
+              <div class="col-md-6">
+                  <div class="form-group">
+                      @Html.LabelFor(model => model.KhachHang.User.Email, new { @class = "control-label col-md-2" })
+                      <div class="col-md-10">
+                          @Html.TextBoxFor(model => model.KhachHang.Email, new { disabled = "disabled" })
+                          @Html.ValidationMessageFor(model => model.KhachHang.Email)
+                      </div>
+                  </div>
+              </div>
+              <div class="col-md-6">
+                  <div class="form-group">
+                      @Html.LabelFor(model => model.NgayDH, new { @class = "control-label col-md-2" })
+                      <div class="col-md-10">
+                          @Html.TextBoxFor(model => model.NgayDH, new { disabled = "disabled" })
+                          @Html.ValidationMessageFor(model => model.NgayDH)
+                      </div>
+                  </div>
+              </div>
+             
+              <div class="col-md-6">
+                  <div class="form-group">
+                      @Html.LabelFor(model => model.NgayGH, new { @class = "control-label col-md-2" })
+                      <div class="col-md-10">
+                          @Html.EditorFor(model => model.NgayGH)
+                          @Html.ValidationMessageFor(model => model.NgayGH)
+                      </div>
+                  </div>
+              </div>
+              <div class="col-md-6">
+                  <div class="form-group">
+                      @Html.LabelFor(model => model.NoiGiaoHang, new { @class = "control-label col-md-2" })
+                      <div class="col-md-10">
+
+                          @Html.TextBoxFor(model => model.NoiGiaoHang, new { disabled = "disabled" })
+                          @Html.ValidationMessageFor(model => model.NoiGiaoHang)
+                      </div>
+                  </div>
+              </div>
+              <div class="col-md-6">
+                  <div class="form-group">
+                      @Html.LabelFor(model => model.TongTien, new { @class = "control-label col-md-2" })
+                      <div class="col-md-10">
+                          @Html.TextBoxFor(model => model.TongTien, new { disabled = "disabled" })
+                          @Html.ValidationMessageFor(model => model.TongTien)
+                      </div>
+                  </div>
+              </div>
+              <div class="col-md-6">
+                  <div class="form-group">
+                      @Html.LabelFor(model => model.ghichu, new { @class = "control-label col-md-2" })
+                      <div class="col-md-10">
+                          @Html.TextBoxFor(model => model.ghichu, new { disabled = "disabled" })
+                          @Html.ValidationMessageFor(model => model.ghichu)
+                      </div>
+                  </div>
+              </div>
+          </div> 
+           
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+                 
+                 @foreach (var item in (IEnumerable<ModeDb.EF.ChiTietDonHang>)TempData["ChitietPro"])
+                   {
+                      <div class="col-md-12">
+                          <div class="row">
+                              <div class="col-md-4">
+                                  <img src="~/Images/@item.MatHang.Image" style="width:100%; height:100%"/>
+                              </div>
+                              <div class="col-md-8">
+                                  <h4 style="color:red; font-size:24px;font-weight:500">@item.MatHang.TenMh</h4>
+                                  <p><span>Giá Thành: </span>@item.MatHang.GiaThanh</p>
+                                  <p><span>Số lượng: </span> @item.SoLuong</p>
+                                  <p><span>Tổng tiền: </span> @item.Tongtien</p>
+                              </div>
+                          </div>
+                      </div>
+                     <hr/>
+                    }       
+                 
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Xác Nhận" style="background:blue;border-radius:5px; color:white;padding:0.3rem 0.9rem;border:none" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+        
+        
+     
+}
+ 

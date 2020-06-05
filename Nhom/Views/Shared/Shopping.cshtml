@@ -1,22 +1,32 @@
 ﻿ @model List<Nhom.Models.CartChoose>
  
+@{
+    double tongtien = 0;
+}
 <div class="shopping">
-    <div class="shop_content">
+   
+         <div class="shop_content">
+@{
+    if (@Model.Count() > 0)
+    {
         <div class="shop_content_item"> 
             <div class="row">
                 @foreach(var item in Model)
                 {
-                 <div class="col-md-4" style="position:relative">
-                     @Html.ActionLink("x", "exit", new { @Control = "" }, new { @class = "exit_shop" })
+                    tongtien = tongtien + (double)@item.soluong * (double)@item.mathang.GiaThanh.GetValueOrDefault(0);
+                 <div class="col-md-4" style="position:relative;z-index:1">
+                     <a class="exit_shop" href="/GioHang/DeleteCartProduct?MaMH=@item.mathang.MaMH" style="font-size:18px; z-index:9999999">X</a>
+                     
                     <img src="~/Images/@item.mathang.Image" alt="anh" style="width:100%;height:100%">
                 </div>
                 <div class="col-md-8">
                     <div class="title"><h3>@item.mathang.TenMh</h3></div>
                     <strong>@(item.mathang.GiaThanh.GetValueOrDefault(0)*item.soluong)</strong>
                     <div class="form-group">
-                        <button>-</button>
-                        <input type="text" value=@item.soluong />
-                        <button>+</button>
+                         
+                        @Html.ActionLink("+", "/themSoluong", new { id = item.mathang.MaMH, pt = "+" }, new { @style = "border:1px solid grey; padding:0.3rem 0.9rem;border-radius:7px;text-decoration:none" })
+                        @item.soluong
+                        @Html.ActionLink("-", "/themSoluong", new { id = item.mathang.MaMH, pt = "-" }, new { @style = "border:1px solid grey; padding:0.3rem 0.9rem;border-radius:7px;text-decoration:none" })
                     </div>
                 </div>
                 }
@@ -28,7 +38,7 @@
         <div class="row justify-content-between mt-5 ">
             <div class="col-md-12" style="justify-content:space-between; display: flex;">
                 <h3>Tổng Cộng: </h3>
-                <strong>200000 vnd </strong>
+                <strong>@tongtien vnd </strong>
 
             </div>
             <div class="col-md-12 mt-2" style="justify-content:space-between; display: flex;">
@@ -40,11 +50,19 @@
                 </div>
             </div>
         </div>
+             }
+             else
+             {
+             <p>Hiện tại chưa có sản phẩm nào được thêm</p>
+             }
+             }
     </div>
+        
+    
 
     <div class="icon_shop">
         <div class="icon_shop_item">
-            <div class="number"><p>1</p></div>
+            <div class="number"><p>@Model.Count()</p></div>
         </div>
         <div class="icon_border"></div>
         <div class="icon_bg"></div>

@@ -25,6 +25,38 @@ namespace Nhom.Controllers
             }
             return View(list);
         }
+        public ActionResult Insert(string pt,long id)
+        {
+            var cart = Session[CARTSESSION];
+            var List = new List<CartChoose>();
+            List = (List<CartChoose>)cart;
+            foreach(var item in List)
+            {
+                if(item.mathang.MaMH==id)
+                {
+                    if(pt.ToString()=="+")
+                    {
+                        item.soluong += 1;
+                    }
+                    else
+                    {
+                        if(item.soluong>1)
+                        {
+                            item.soluong -= 1;
+                        }
+                        else
+                        {
+                             ModelState.AddModelError("", "Số lương sản phẩm phải lớn hơn bằng 1");
+                        }
+                       
+                    }
+                }
+            }
+            Session[CARTSESSION] = List;
+            return RedirectToAction("Index", "GioHang");
+        }
+
+        
 
 
         public ActionResult AddCart(int soluong, long MaMH)
@@ -65,6 +97,27 @@ namespace Nhom.Controllers
                 List.Add(cartchoose);
                 Session[CARTSESSION] = List;
             }
+            return RedirectToAction("Index", "GioHang");
+        }
+        public ActionResult DeleteCartProduct(long MaMH)
+        {
+            var cart = Session["CARTSESSION"];
+            var List = new List<CartChoose>();
+            var removecart = new List<CartChoose>();
+            List = (List<CartChoose>)cart;
+            foreach (var iten in List)
+            {
+                if (iten.mathang.MaMH == MaMH)
+                {
+                    removecart.Add(iten);
+                }
+            }
+            foreach (var item in removecart)
+            {
+                List.Remove(item);
+            }
+            Session["CARTSESSION"] = List;
+
             return RedirectToAction("Index", "GioHang");
         }
 	}

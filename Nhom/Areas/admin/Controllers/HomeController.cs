@@ -25,6 +25,7 @@ namespace Nhom.Areas.admin.Controllers
         {
             TempData["pro"] = db.MatHangs.Count();
             TempData["user"] = db.Users.Count();
+            TempData["DH"] = db.DonHangs.Count();
             return PartialView();
         }
 	}

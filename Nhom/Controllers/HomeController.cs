@@ -64,6 +64,37 @@ namespace Nhom.Controllers
             MatHang mathang = db.getProductByID(id);
             return View(mathang);
         }
+
+        public ActionResult themSoluong(int id ,string pt)
+        {
+            var cart = Session["CARTSESSION"];
+            var List = new List<CartChoose>();
+            List = (List<CartChoose>)cart;
+            foreach (var item in List)
+            {
+                if (item.mathang.MaMH == id)
+                {
+                    if (pt.ToString() == "+")
+                    {
+                        item.soluong += 1;
+                    }
+                    else
+                    {
+                        if (item.soluong > 1)
+                        {
+                            item.soluong -= 1;
+                        }
+                        else
+                        {
+                            ModelState.AddModelError("", "Số lương sản phẩm phải lớn hơn bằng 1");
+                        }
+
+                    }
+                }
+            }
+            Session["CARTSESSION"] = List;
+            return RedirectToAction("Index", "Home");
+        }
   
 	}
 }

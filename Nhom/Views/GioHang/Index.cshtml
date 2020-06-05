@@ -2,7 +2,7 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutPublic.cshtml";
-    var tongtien = 0;
+    double? tongtien = 0;
 }
 
 <h2 style="color:red;text-align:center;font-size:24px;margin:5rem 5rem">Giỏ Hàng</h2>
@@ -23,14 +23,22 @@
         <tbody>
             @foreach (var item in Model)
             {
-                 
+                @Html.AntiForgeryToken()
+                tongtien = tongtien + (double)@item.soluong * (double)@item.mathang.GiaThanh.GetValueOrDefault(0);
                 <tr style="font-size:20px">
                     <td><img src="~/Images/@item.mathang.Image" style="width:90px;height:75px " /></td>
                     <td><p>@item.mathang.TenMh</p></td>
                     <td>@item.mathang.GiaThanh</td>
-                    <td>@item.soluong</td>
+                    <td>
+                         
+                        @Html.ActionLink("+", "Insert", new { id = item.mathang.MaMH,pt="+" }, new { @style = "border:1px solid grey; padding:0.3rem 0.9rem;border-radius:7px;text-decoration:none" })
+                        @item.soluong
+                        @Html.ActionLink("-", "Insert", new { id = item.mathang.MaMH,pt="-" }, new { @style = "border:1px solid grey; padding:0.3rem 0.9rem;border-radius:7px;text-decoration:none" })
+                    
+                    </td>
                     <td>@(item.mathang.GiaThanh.GetValueOrDefault(0) * item.soluong)</td>
-                    <td><a>Xóa</a></td>
+                    <td><a href="/GioHang/DeleteCartProduct?MaMH=@item.mathang.MaMH" style="font-size:18px"><i class="fas fa-trash-alt"></i></a></td>
+                    @Html.ValidationSummary(true, "", new { @style = "color:red" })
                 </tr>
             }
            
