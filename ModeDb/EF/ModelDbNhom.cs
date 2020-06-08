@@ -66,6 +66,11 @@ namespace ModeDb.EF
                 .Property(e => e.ID)
                 .IsUnicode(false);
 
+            modelBuilder.Entity<Group>()
+                .HasMany(e => e.Users)
+                .WithOptional(e => e.Group)
+                .HasForeignKey(e => e.IDGroup);
+
             modelBuilder.Entity<HeDieuHanh>()
                 .Property(e => e.MaHDH)
                 .IsUnicode(false);

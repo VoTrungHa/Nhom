@@ -39,12 +39,14 @@ namespace ModeDb.EF
         [StringLength(150)]
         public string RePassWord { get; set; }
 
-        public bool? Status { get; set; }
+        public bool Status { get; set; }
 
         public bool? Admin { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DanhGia> DanhGias { get; set; }
+
+        public virtual Group Group { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<KhachHang> KhachHangs { get; set; }

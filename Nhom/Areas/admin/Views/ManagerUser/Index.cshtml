@@ -3,6 +3,7 @@
 @{
     Layout = null;
     Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
+    var grid = new WebGrid(Model, canPage: true, rowsPerPage: 5);
 }
 
 <!DOCTYPE html>
@@ -16,48 +17,37 @@
     <p>
         @Html.ActionLink("Create New", "Create")
     </p>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.HoTen)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Phone)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PassWord)
-            </th>
-            
-             
-            <th>Hoạt động</th>
-        </tr>
-    
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.HoTen)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Phone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PassWord)
-            </td>
-             
-            <td>
-                @Html.ActionLink("Chỉnh Sửa", "Edit", new { id=item.IDUser }) |
-                @Html.ActionLink("Xem Chi Tiết", "Details", new { id=item.IDUser }) |
-                @Html.ActionLink("Xóa", "Delete", new { id=item.IDUser })
-            </td>
-        </tr>
-    }
-    
-    </table>
+     <div>
+
+         @grid.GetHtml(
+            tableStyle: "table table-bordered table-hover",
+            footerStyle: "grid-footer",
+            fillEmptyRows: true,
+            mode: WebGridPagerModes.Numeric,
+            alternatingRowStyle: "alternatingRowStyle",
+            htmlAttributes: new { @class = "Grid" },
+              columns: new[]  // colums in grid
+             {
+         grid.Column("STT",format: item => item.WebGrid.Rows.IndexOf(item) + 1 + Math.Round(Convert.ToDouble(grid.TotalRowCount / grid.PageCount) / grid.RowsPerPage) * grid.RowsPerPage * grid.PageIndex),
+       grid.Column("Group.Name","Quyền"  ),
+         grid.Column("Email","Email"),
+         grid.Column("HoTen","Họ Tên"), //the model fields to display
+        grid.Column("Phone","Điện Thoại "  ), 
+        grid.Column("Chức năng", format: @<text>
+         <a href="@Url.Action("Edit",
+                        new { id = item.IDUser})" class="edit-btn"><abbr title="Cập nhật dữ liệu"><i style="color:red" class="fas fa-pen"></i></abbr></a>
+         <a href="@Url.Action("Details",
+                        new { id = item.IDUser })" class="edit-btn"><abbr title="Xem chi tiết"><i style="color:green; padding: 0 0.5rem" class="fas fa-calendar-day"></i></abbr></a>
+         <a href="@Url.Action("Delete",
+                        new { id = item.IDUser })" class="edit-btn">
+             <abbr title="Xóa dữ liệu">
+                 <i style="color:blue" class="fas fa-trash-alt"></i>
+             </abbr>
+         </a>
+     </text>),
+
+         }
+                                  )
+     </div>
 </body>
 </html>

@@ -1895,11 +1895,6 @@
     <Content Include="Areas\admin\Views\ManagerUser\Details.cshtml" />
     <Content Include="Areas\admin\Views\ManagerUser\Edit.cshtml" />
     <Content Include="Areas\admin\Views\ManagerUser\Index.cshtml" />
-    <Content Include="Areas\admin\Views\pro\Create.cshtml" />
-    <Content Include="Areas\admin\Views\pro\Delete.cshtml" />
-    <Content Include="Areas\admin\Views\pro\Details.cshtml" />
-    <Content Include="Areas\admin\Views\pro\Edit.cshtml" />
-    <Content Include="Areas\admin\Views\pro\Index.cshtml" />
     <Content Include="Areas\admin\Views\Product\Create.cshtml" />
     <Content Include="Areas\admin\Views\Product\Delete.cshtml" />
     <Content Include="Areas\admin\Views\Product\Details.cshtml" />
@@ -1940,7 +1935,6 @@
     <Compile Include="Areas\admin\Controllers\DonHangController.cs" />
     <Compile Include="Areas\admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\admin\Controllers\ManagerUserController.cs" />
-    <Compile Include="Areas\admin\Controllers\proController.cs" />
     <Compile Include="Areas\admin\Controllers\ProductController.cs" />
     <Compile Include="Areas\admin\Controllers\UserLoginController.cs" />
     <Compile Include="Areas\admin\Models\Donhang.cs" />

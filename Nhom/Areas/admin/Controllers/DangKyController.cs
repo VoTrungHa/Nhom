@@ -33,6 +33,8 @@ namespace Nhom.Areas.admin.Controllers
 
                             var password = Encryptor.MD5Hash(model.PassWord);// mã hóa pass
                             model.PassWord = password;
+                            model.IDGroup = "CUSTOMER";
+                            model.RePassWord = Encryptor.MD5Hash(model.RePassWord);
                             db.InsertUser(model);
                             return RedirectToAction("Index", "UserLogin");
                         }

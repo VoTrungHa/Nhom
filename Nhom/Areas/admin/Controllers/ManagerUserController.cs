@@ -19,7 +19,7 @@ namespace Nhom.Areas.admin.Controllers
         [HasCredentialAttb(ID = "VIEW_USER")]
         public ActionResult Index()
         {
-             
+            var Users = db.Users.Include(x => x.IDGroup);
             return View(db.Users.ToList());
         }
 
@@ -42,6 +42,7 @@ namespace Nhom.Areas.admin.Controllers
         [HasCredentialAttb(ID = "ADD_USER")]
         public ActionResult Create()
         {
+            ViewBag.IDGroup = new SelectList(db.Groups, "ID", "Name");
             return View();
         }
 
@@ -50,15 +51,18 @@ namespace Nhom.Areas.admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="IDUser,Email,HoTen,Phone,PassWord,RePassWord,Status,Admin")] User user)
+        public ActionResult Create([Bind(Include = "IDUser,IDGroup,Email,HoTen,Phone,PassWord,RePassWord,Status,Admin")] User user)
         {
             if (ModelState.IsValid)
             {
+                user.PassWord = Encryptor.MD5Hash(user.PassWord);
+                user.RePassWord = Encryptor.MD5Hash(user.RePassWord);
                 db.Users.Add(user);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
+            ViewBag.IDGroup = new SelectList(db.Groups, "ID", "Name", user.IDGroup);
             return View(user);
         }
 
@@ -75,15 +79,17 @@ namespace Nhom.Areas.admin.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.IDGroup = new SelectList(db.Groups, "ID", "Name");
             return View(user);
         }
+        
 
         // POST: /admin/ManagerUser/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="IDUser,Email,HoTen,Phone,PassWord,RePassWord,Status,Admin")] User user)
+        public ActionResult Edit([Bind(Include = "IDUser,IDGroup,Email,HoTen,Phone,PassWord,RePassWord,Status,Admin")] User user)
         {
             if (ModelState.IsValid)
             {
@@ -91,6 +97,7 @@ namespace Nhom.Areas.admin.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.IDGroup = new SelectList(db.Groups, "ID", "Name", user.IDGroup);
             return View(user);
         }
 

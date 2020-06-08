@@ -1,8 +1,6 @@
 ﻿@model PagedList.IPagedList<ModeDb.EF.MatHang>
 @using PagedList.Mvc;
-
-
-
+ 
 <section class="container mode_contents mt-5">
     <div class="mode_content_title row">
         <h4>ĐIỆN THOẠI</h4>
@@ -109,9 +107,13 @@
                     </div>
                 </div>
             } 
+           
 
         </div>
     </div>
+</section>
+<section>
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
 </section>
 
 

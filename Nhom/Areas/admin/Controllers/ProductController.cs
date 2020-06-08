@@ -51,10 +51,10 @@ namespace Nhom.Areas.admin.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [AcceptVerbs(HttpVerbs.Post)]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include="MaMH,TenMh,GiaThanh,GiaKhuyenMai,Soluong,MaLoaiHang,NgayNhap,NgaySuaDoi,Image,status,ManHinh,Ram,CameraT,CameraS,Cpu,Gpu,BoNho,DungLuongPin,luotXem,MaHDH")] MatHang mathang)
-        {
-
+        { 
             var imgNV = Request.Files["Image"];
             //Lấy thông tin từ input type=file có tên Avatar
             string postedFileName = System.IO.Path.GetFileName(imgNV.FileName);

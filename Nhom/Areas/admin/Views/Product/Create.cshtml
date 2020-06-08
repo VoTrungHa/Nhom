@@ -10,7 +10,7 @@
         <h5 class="mb-4">
             <font style="vertical-align:inherit; font-size:30px">Nhập Thêm Sản Phẩm</font>
         </h5>
-        @using (Html.BeginForm("create", "pro", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        @using (Html.BeginForm("Create","Product",FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
             @Html.AntiForgeryToken()
             @Html.ValidationSummary(true, "", new { @style = "color:red" })
@@ -171,9 +171,7 @@
                                 @Html.DropDownList("MaHDH", String.Empty)
                                 @Html.ValidationMessageFor(model => model.MaHDH)
                             </div>
-                        </div>
-
-
+                        </div> 
                     </div>
                     <div class="button-cj">
                         <div class="form-group">

@@ -3,6 +3,7 @@
 @{
     Layout = null;
     Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
+    var grid = new WebGrid(Model, canPage: true, defaultSort: "NgayNhap", rowsPerPage: 5);
 }
 
 <!DOCTYPE html>
@@ -11,89 +12,51 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
+     
 </head>
 <body>
     <p>
         @Html.ActionLink("Create New", "Create")
     </p>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Image)
-            </th>
-           
-            <th>
-                @Html.DisplayNameFor(model => model.TenMh)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.GiaThanh)
-            </th>
-            
-            <th>
-                @Html.DisplayNameFor(model => model.Soluong)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NgayNhap)
-            </th>
 
-            <th>
-                @Html.DisplayNameFor(model => model.ManHinh)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Ram)
-            </th>
-            
-            <th>
-                @Html.DisplayNameFor(model => model.BoNho)
-            </th>
-            
+    <div>
+        @grid.GetHtml(
+            tableStyle: "table table-bordered table-hover",
+            footerStyle: "grid-footer",
+            fillEmptyRows: true,
+            mode: WebGridPagerModes.Numeric,
+            alternatingRowStyle: "alternatingRowStyle",
+            htmlAttributes: new {@class = "Grid" },
+              columns: new[]  // colums in grid
+             {
+         grid.Column("STT",format: item => item.WebGrid.Rows.IndexOf(item) + 1 + Math.Round(Convert.ToDouble(grid.TotalRowCount / grid.PageCount) / grid.RowsPerPage) * grid.RowsPerPage * grid.PageIndex),
+       grid.Column("LoaiMatHang.TenLoaiMH","Mã Loại"  ), 
+         grid.Column("image","ảnh",format:@<text><img style="width:50px;height:50px" alt="@item.image" src="~/Images/@item.image" /> </text>),
+         grid.Column("TenMH","Sản Phẩm"), //the model fields to display
+        grid.Column("SoLuong","Số Lượng"  ), 
+        grid.Column("NgayNhap","Ngày Nhập",format:@<text> @item.NgayNhap.ToString("dd/MM/yyyy")</text>),
+        grid.Column("GiaThanh","Giá Thành",format:@<text> @item.GiaThanh.ToString("#,##0")</text>),
+        grid.Column("Tình Trạng","Tình Trạng",format: (@item) => @item.SoLuong>0?"còn hàng":"hết hàng"),
+        grid.Column("HeDieuHanh.TenHDH","Hệ Điều Hành"  ),  
+        grid.Column("Chức năng", format: @<text>
+            <a href="@Url.Action("Edit",
+                        new { id = item.MaMH})" class="edit-btn"><abbr title="Cập nhật dữ liệu"><i style="color:red" class="fas fa-pen"></i></abbr></a>
+            <a href="@Url.Action("Details",
+                        new { id = item.MaMH })" class="edit-btn"><abbr title="Xem chi tiết"><i style="color:green; padding: 0 0.5rem" class="fas fa-calendar-day"></i></abbr></a>
+            <a href="@Url.Action("Delete",
+                        new { id = item.MaMH })" class="edit-btn">
+                <abbr title="Xóa dữ liệu">
+                    <i style="color:blue" class="fas fa-trash-alt"></i>
+                </abbr>
+            </a>
+        </text>),
 
+         }
+                 )
+</div>
 
-            <th></th>
-        </tr>
+ 
 
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    <img src="~/Images/@item.Image" style="width:75px;height:50px" />
-                </td>
                 
-                <td>
-                    @Html.DisplayFor(modelItem => item.TenMh)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.GiaThanh)
-                </td>
-                
-                <td>
-                    @Html.DisplayFor(modelItem => item.Soluong)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NgayNhap)
-                </td>
-
-
-                <td>
-                    @Html.DisplayFor(modelItem => item.ManHinh)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Ram)
-                </td>
-                 
-                <td>
-                    @Html.DisplayFor(modelItem => item.BoNho)
-                </td>
-                
-
-                <td>
-                    @Html.ActionLink("Thây Đổi", "Edit", new { id = item.MaMH }) |
-                    @Html.ActionLink("Xem Chi Tiết", "Details", new { id = item.MaMH }) |
-                    @Html.ActionLink("Xóa", "Delete", new { id = item.MaMH })
-                </td>
-            </tr>
-        }
-
-    </table>
 </body>
 </html>
