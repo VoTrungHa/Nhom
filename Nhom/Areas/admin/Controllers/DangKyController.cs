@@ -30,13 +30,14 @@ namespace Nhom.Areas.admin.Controllers
                     {
                         if (result == null)
                         {
-
+                           
                             var password = Encryptor.MD5Hash(model.PassWord);// mã hóa pass
                             model.PassWord = password;
                             model.IDGroup = "CUSTOMER";
                             model.RePassWord = Encryptor.MD5Hash(model.RePassWord);
                             db.InsertUser(model);
-                            return RedirectToAction("Index", "UserLogin");
+                            TempData["create"] = "Tạo Tài Khoản Thành Công !";
+                            //return RedirectToAction("Index", "UserLogin");
                         }
                         else
                         {
@@ -52,9 +53,10 @@ namespace Nhom.Areas.admin.Controllers
                 {
                     ModelState.AddModelError("", "Mật khẩu phải giống nhau chứ  !");
                 }
-                
 
+               
             }
+           
             return View();
         }
 	}

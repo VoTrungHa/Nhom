@@ -7,7 +7,7 @@
 
 <h2 style="color:red;text-align:center;font-size:26px">Xác Nhận Đơn Hàng</h2>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("XacNhans","DonHang",FormMethod.Post))
 {
     @Html.AntiForgeryToken()
      @Html.ValidationSummary(true)
@@ -60,8 +60,10 @@
                   <div class="form-group">
                       @Html.LabelFor(model => model.NgayGH, new { @class = "control-label col-md-2" })
                       <div class="col-md-10">
-                          @Html.EditorFor(model => model.NgayGH)
-                          @Html.ValidationMessageFor(model => model.NgayGH)
+                          <input type="text" name="ngayGH" value="@ViewBag.ngayGH"  />
+                           
+                              <span style="color:red">@TempData["co"]</span>
+                           
                       </div>
                   </div>
               </div>
@@ -120,7 +122,10 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
-                            <input type="submit" value="Xác Nhận" style="background:blue;border-radius:5px; color:white;padding:0.3rem 0.9rem;border:none" />
+                            
+                            <input type="submit" value="Giao Hàng" style="background:blue;border-radius:5px; color:white;padding:0.3rem 0.9rem;border:none" />
+                            <span style="color:red">@TempData["gh"]</span>
+                        
                         </div>
                     </div>
                 </div>

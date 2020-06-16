@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
+    var grid = new WebGrid(Model, canPage: true, defaultSort: "NgayNhap", rowsPerPage: 5);
 }
 
 <h2 style="font-size:24px;color:red;">Danh sánh Đơn Hàng</h2>
@@ -69,9 +70,17 @@
              
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.SoHoaDon }) |
-            @Html.ActionLink("Details", "Details", new { id=item.SoHoaDon }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.SoHoaDon })
+            <a href="@Url.Action("Edit",
+            new { id = item.SoHoaDon })" class="edit-btn"><abbr title="Cập nhật dữ liệu"><i style="color:red" class="fas fa-pen"></i></abbr></a>
+            <a href="@Url.Action("Details",
+            new { id = item.SoHoaDon })" class="edit-btn"><abbr title="Xem chi tiết"><i style="color:green; padding: 0 0.5rem" class="fas fa-calendar-day"></i></abbr></a>
+            <a href="@Url.Action("Delete",
+            new { id = item.SoHoaDon })" class="edit-btn">
+                <abbr title="Xóa dữ liệu">
+                    <i style="color:blue" class="fas fa-trash-alt"></i>
+                </abbr>
+            </a>
+            
         </td>
     </tr>
 }

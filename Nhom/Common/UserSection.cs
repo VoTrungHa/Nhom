@@ -12,6 +12,7 @@ namespace Nhom.Common
         public string email { get; set; }// lưu email
         public string name { get; set; }// tên đăng nhập
         public string IDGroup { get; set; }// cấp bậc quyền
+        public string pass { get; set; }
         public long IDUser { get; set; }// lấy mã khách hàng
     }
 }

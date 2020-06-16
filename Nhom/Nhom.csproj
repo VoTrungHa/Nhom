@@ -1906,6 +1906,11 @@
     <Content Include="Areas\admin\Views\DonHang\Edit.cshtml" />
     <Content Include="Areas\admin\Views\DonHang\Index.cshtml" />
     <Content Include="Areas\admin\Views\DonHang\XacNhan.cshtml" />
+    <Content Include="Areas\admin\Views\ThongKe\Create.cshtml" />
+    <Content Include="Areas\admin\Views\ThongKe\Delete.cshtml" />
+    <Content Include="Areas\admin\Views\ThongKe\Details.cshtml" />
+    <Content Include="Areas\admin\Views\ThongKe\Edit.cshtml" />
+    <Content Include="Areas\admin\Views\ThongKe\Index.cshtml" />
     <None Include="Scripts\jquery-3.5.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.5.0.js" />
     <Content Include="Scripts\jquery-3.5.0.min.js" />
@@ -1936,6 +1941,7 @@
     <Compile Include="Areas\admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\admin\Controllers\ManagerUserController.cs" />
     <Compile Include="Areas\admin\Controllers\ProductController.cs" />
+    <Compile Include="Areas\admin\Controllers\ThongKeController.cs" />
     <Compile Include="Areas\admin\Controllers\UserLoginController.cs" />
     <Compile Include="Areas\admin\Models\Donhang.cs" />
     <Compile Include="Areas\admin\Models\ProductModel.cs" />

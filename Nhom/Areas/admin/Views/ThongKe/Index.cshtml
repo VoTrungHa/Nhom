@@ -1,0 +1,57 @@
+﻿@model IEnumerable<ModeDb.EF.DonHang>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
+    var grid = new WebGrid(Model, canPage: true, defaultSort: "NgayNhap", rowsPerPage: 5);
+}
+
+<h2 style="color:red; text-align:center">Doanh Thu Bán Hàng</h2>
+
+<div style="float:right; padding:1rem 0rem;">
+    @using(Html.BeginForm("Indexs","ThongKe",FormMethod.Post))
+    {
+         <div class="form-group">
+        <input type="date" name="truoc" value=@TempData["date"] />
+             <input type="date" name="sau" value=@TempData["date"] />
+        <input type="submit" value="Lọc"/>
+        <span>@TempData["0"]</span>
+    </div>
+    }
+   
+</div>
+@if (@Model!=null)
+{
+    <div>
+    @grid.GetHtml(
+            tableStyle: "table table-bordered table-hover",
+            footerStyle: "grid-footer",
+            fillEmptyRows: true,
+            mode: WebGridPagerModes.Numeric,
+            alternatingRowStyle: "alternatingRowStyle",
+            htmlAttributes: new { @class = "Grid" },
+              columns: new[]  // colums in grid
+             {
+         grid.Column("STT",format: item => item.WebGrid.Rows.IndexOf(item) + 1 + Math.Round(Convert.ToDouble(grid.TotalRowCount / grid.PageCount) / grid.RowsPerPage) * grid.RowsPerPage * grid.PageIndex),
+       grid.Column("KhachHang.TenKH","Tên Khách"  ),
+         grid.Column("NhanVien.TenNV","Nhân Viên"), 
+        grid.Column("NgayDH","Ngày Đặt Hàng",format:@<text> @item.NgayDH.ToString("dd/MM/yyyy")</text>),
+        grid.Column("NgayGH","Ngày Giao Hàng",format:@<text> @item.NgayGH.ToString("dd/MM/yyyy")</text>),   
+        grid.Column("TongTien","Giá Thành",format:@<text> @item.TongTien.ToString("#,##0")</text>),
+         
+        grid.Column("NoiGiaoHang","Nơi Giao Hàng"  ),
+         grid.Column("ghichu","Ghi Chú"  ),
+         
+         }
+                      )
+</div>
+}
+else
+{
+    <p style="color:red;text-align:center">Không có Hớn Đơn nào</p>
+}
+  
+<div style="float:right">
+    <p style="color:black; font-size:22px">Tổng doanh Thu:<span style="color:red; font-size:20px"> 120000  vnd</span></p>
+</div>
+

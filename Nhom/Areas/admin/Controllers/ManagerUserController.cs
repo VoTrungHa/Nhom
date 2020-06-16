@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using ModeDb.EF;
 using Nhom.Common;
+using ModeDb.DB;
 
 namespace Nhom.Areas.admin.Controllers
 {
@@ -55,14 +56,41 @@ namespace Nhom.Areas.admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                user.PassWord = Encryptor.MD5Hash(user.PassWord);
-                user.RePassWord = Encryptor.MD5Hash(user.RePassWord);
-                db.Users.Add(user);
-                db.SaveChanges();
+                var us = new UserDb().GetUserByEmail(user.Email);
+                ViewBag.IDGroup = new SelectList(db.Groups, "ID", "Name", user.IDGroup);
+                if(us==null)
+                {
+                    user.PassWord = Encryptor.MD5Hash(user.PassWord);
+                    user.RePassWord = Encryptor.MD5Hash(user.RePassWord);
+                    db.Users.Add(user);
+                    db.SaveChanges();
+
+                    if (user.IDGroup == "MEMBER" || user.IDGroup == "ADMIN")
+                    { 
+                        NhanVien nh = new NhanVien();
+                        nh.Email = user.Email;
+                        nh.TenNV = user.HoTen;
+                        nh.IDUser = user.IDUser;
+                        nh.SoDT = user.Phone; 
+                        db.NhanViens.Add(nh);
+                        db.SaveChanges();
+                        TempData["tk"] = "Đăng ký tài khoản thành công !";
+                        return View();
+                    }
+                }
+                else
+                {
+                    TempData["tk"] = "Email đã tồn tại !";
+                    return View();
+                }
+
+                
+                
+
                 return RedirectToAction("Index");
             }
 
-            ViewBag.IDGroup = new SelectList(db.Groups, "ID", "Name", user.IDGroup);
+           
             return View(user);
         }
 

@@ -18,7 +18,8 @@
         @Html.AntiForgeryToken()
         
         <div class="form-horizontal">
-            <h4>User</h4>
+            <h4 style="text-align: center; color:red">Thêm Thông Tin Tài Khoản</h4>
+            <span style="color:red">@TempData["tk"]</span>
             <hr />
             @Html.ValidationSummary(true)
     

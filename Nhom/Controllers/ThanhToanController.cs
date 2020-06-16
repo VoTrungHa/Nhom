@@ -21,17 +21,27 @@ namespace Nhom.Controllers
         {
             var cart = Session["CARTSESSION"];
             var list = new List<CartChoose>();
+           // var user=(UserSection)Session["USER_SESSION"];
             if(cart!=null)
             {
                 list = (List<CartChoose>)cart;
             }
+           // ViewBag.email = user.email; 
+           // ViewBag.name = user.name;
+
             return View(list);
         }
         [ValidateAntiForgeryToken]
         [HttpPost]
         public ActionResult Index(KhachHang cus,DonHang dh)
         {
-            if(ModelState.IsValid)
+
+             var Email = Request["email"];
+            var TenKH = Request["tenkh"];
+            var SoDT = Request["sodt"];
+            var Diachi = Request["diachi"];
+
+            if (Email.Length > 0 && TenKH.Length > 0 && SoDT.Length > 0 && Diachi.Length > 0)
             {
                 var user = Session["USER_SESSION"];
                 double tongtien = 0;
@@ -44,25 +54,29 @@ namespace Nhom.Controllers
                     foreach (var item in list)// tính tổng tiền của đơn hàng
                     {
                         tongtien = tongtien + (double)item.mathang.GiaThanh.GetValueOrDefault(0) * (double)item.soluong;
-
-
                     }
-
                     var Idcus = (UserSection)Session["USER_SESSION"];
-                    cus.Email = Request["email"];
-                    cus.TenKH = Request["tenkh"];
-                    cus.SoDT = Request["sodt"];
-                    cus.Diachi = Request["diachi"];
-                    cus.IDUser = Idcus.IDUser;
-                    db.KhachHangs.Add(cus);
-                    db.SaveChanges();
-
+                    var k = new UserDb().GetKhachhangByEmail(Request["email"]);
+                    if(k==null)// nêu khách hàng chưa từng mua hàng thì thêm thông tin khách hàng vào db
+                    {
+                       
+                        cus.Email = Request["email"];
+                        cus.TenKH = Request["tenkh"];
+                        cus.SoDT = Request["sodt"];
+                        cus.Diachi = Request["diachi"];
+                        cus.IDUser = Idcus.IDUser;
+                        db.KhachHangs.Add(cus);
+                        db.SaveChanges();
+                    }
+                     
+                    long kh = new UserDb().getKhachHangByID(Idcus.IDUser);
 
                     //long kh = db.KhachHang
                     // don hang : thêm thông tin sản phẩm vào đơn hàng
                     string dateAsString = DateTime.Now.ToString("dddd, MMMM dd, yyyy hh:mm:ss tt");
-                    dh.MaKH = Idcus.IDUser;
+                    dh.MaKH = kh;
                     dh.NgayDH = DateTime.Parse(dateAsString);
+                    dh.NgayGH = null;
                     dh.NoiGiaoHang = Request["diachi"];
                     dh.ghichu = Request["ghichu"];
                     dh.TongTien = (decimal)tongtien;
@@ -72,7 +86,7 @@ namespace Nhom.Controllers
 
 
                     // laays ra SoHoaDon vừa nhập vào .
-                    long NewDH = new UserDb().getNewDonHang(Idcus.IDUser, true);
+                    long NewDH = new UserDb().getNewDonHang(kh, true);
                     foreach (var item in list)// đưa danh sách sản phẩm đặt hàn vào chitiethoadon
                     {
                         ChiTietDonHang ct = new ChiTietDonHang();
@@ -90,12 +104,12 @@ namespace Nhom.Controllers
                 }
                 else
                 {
-                    TempData["thanhtoan"] = "Thanh Toán Không Thành Công";
+                    TempData["thanhtoan"] = "Hãy kiểm tra đăng nhập hoặc giỏ hàng ";
                 } 
             }
             else
             {
-                TempData["thanhtoan"] = "Thanh Toán Không Thành Công";
+                TempData["thanhtoan"] = "Thanh Toán Không Thành Công Hãy nhập đầy đủ thông tin";
             } 
             return RedirectToAction("Index", "ThanhToan");
         }

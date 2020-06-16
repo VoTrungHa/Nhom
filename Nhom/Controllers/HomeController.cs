@@ -21,7 +21,7 @@ namespace Nhom.Controllers
             return View();
         }
         [ChildActionOnly]// hiển thị danh sách sản phầm phần trang chủ
-        public ActionResult ContentMain(int page=1,int sizePage=8)
+        public ActionResult ContentMain(int page=1,int sizePage=6)
         {
             var db = new ProductDB();
             var model = db.getPageListProduct(page, sizePage); 

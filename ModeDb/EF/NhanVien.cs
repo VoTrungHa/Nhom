@@ -27,7 +27,7 @@ namespace ModeDb.EF
         [StringLength(20)]
         public string SoDT { get; set; }
 
-        [StringLength(10)]
+        [StringLength(50)]
         public string Email { get; set; }
 
         public long IDUser { get; set; }

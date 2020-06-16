@@ -70,5 +70,28 @@ namespace ModeDb.DB
                           ).ToList();
             return data;
         }
+
+        public List<ChiTietDonHang> getListMatHangBySoHoaDon(long p)
+        {
+            var data = (from a in db.DonHangs
+                        where a.SoHoaDon == p
+                        join ct in db.ChiTietDonHangs on a.SoHoaDon equals ct.SoHoaDon
+                        join mh in db.MatHangs on ct.MaMH equals mh.MaMH
+                        select ct
+                          ).ToList();
+            return data;
+        }
+
+        public KhachHang getKhByMaKH(long p)
+        {
+            var data = (from a in db.KhachHangs where a.MaKH == p select a).First();
+            return data;
+        }
+
+        public NhanVien getNhanVien(long p)
+        {
+            var data = (from a in db.NhanViens where a.IDUser == p select a).First();
+            return data;
+        }
     }
 }

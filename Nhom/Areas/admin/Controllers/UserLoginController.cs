@@ -11,6 +11,7 @@ namespace Nhom.Areas.admin.Controllers
 {
     public class UserLoginController : Controller
     {
+        
         //
         // GET: /admin/UserLogin/
         public ActionResult Index()
@@ -45,6 +46,7 @@ namespace Nhom.Areas.admin.Controllers
                     userSesstion.IDGroup = user.IDGroup;
                     userSesstion.Admin = user.Admin;
                     userSesstion.IDUser = user.IDUser;
+                    userSesstion.pass = model.PassWord;
                     userSesstion.name = user.HoTen;
                     var ListCredential = db.GetListCredential(model.Email);// lấy danh sách quyền
                     Session.Add(CommonContact.SESTION_CREDENTIAL, ListCredential);// đưa danh sách vào sesstion
@@ -53,6 +55,8 @@ namespace Nhom.Areas.admin.Controllers
                     if(result==1)
                     {
                         return RedirectToAction("Index", "Home");
+
+                        
                     }
                     else if (result == 3)
                     {

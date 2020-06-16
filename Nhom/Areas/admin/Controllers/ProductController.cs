@@ -44,6 +44,9 @@ namespace Nhom.Areas.admin.Controllers
         {
             ViewBag.MaHDH = new SelectList(db.HeDieuHanhs, "MaHDH", "TenHDH");
             ViewBag.MaLoaiHang = new SelectList(db.LoaiMatHangs, "MaLoaiHang", "TenLoaiMH");
+            string dateAsString = DateTime.Now.ToString("MM/dd/yyyy");
+            ViewBag.date = dateAsString;
+
             return View();
         }
 

@@ -1,7 +1,8 @@
-namespace ModeDb.EF
+﻿namespace ModeDb.EF
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
@@ -19,23 +20,28 @@ namespace ModeDb.EF
 
         [Key]
         public long IDUser { get; set; }
-
+         
         [StringLength(50)]
         public string IDGroup { get; set; }
 
-        [Required]
+        [Required(ErrorMessage="Email còn trống")]
+        [DisplayName("Email")]
         [StringLength(100)]
         public string Email { get; set; }
-
+         [Required(ErrorMessage = "Tên người dùng còn trống")]
+         [DisplayName("Tên người dùng")]
         [StringLength(50)]
         public string HoTen { get; set; }
-
+         [Required(ErrorMessage = "Điện thoại còn trống")]
+         [DisplayName("Số điện thoại")]
         [StringLength(12)]
         public string Phone { get; set; }
-
+         [Required(ErrorMessage = "Mật khẩu còn trống")]
+         [DisplayName("Nhắc lại mật khẩu")]
         [StringLength(150)]
         public string PassWord { get; set; }
-
+         [Required(ErrorMessage = "Mật khẩu còn trống")]
+         [DisplayName("Nhắc lại mật khẩu")]
         [StringLength(150)]
         public string RePassWord { get; set; }
 

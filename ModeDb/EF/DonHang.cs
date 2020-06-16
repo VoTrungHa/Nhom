@@ -1,4 +1,4 @@
-namespace ModeDb.EF
+﻿namespace ModeDb.EF
 {
     using System;
     using System.Collections.Generic;
@@ -24,8 +24,10 @@ namespace ModeDb.EF
 
         public DateTime? NgayDH { get; set; }
 
+        
         public DateTime? NgayGH { get; set; }
 
+       
         [StringLength(150)]
         public string NoiGiaoHang { get; set; }
 

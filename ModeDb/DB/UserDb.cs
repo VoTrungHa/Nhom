@@ -20,6 +20,11 @@ namespace ModeDb.DB
         {
 
             return db.Users.SingleOrDefault(x => x.Email == Email);
+        }
+        public KhachHang GetKhachhangByEmail(string Email)// kiem tra user theo email
+        {
+
+            return db.KhachHangs.SingleOrDefault(x => x.Email == Email);
         } 
         public string InsertUser(User model)// insert user đen db
         {
@@ -117,6 +122,20 @@ namespace ModeDb.DB
                         select new {SoHoaDon=a.SoHoaDon,NgayNhap=a.NgayDH }).OrderByDescending(x=>x.NgayNhap);
             return datas.Select(x=>x.SoHoaDon).First();
         }
+
+        public long getKhachHangByID(long p)
+        {
+             var data=(from a in db.KhachHangs where a.IDUser==p
+                select new {MaKH=a.MaKH}).OrderByDescending(x=>x.MaKH);
+            
+            return data.Select(x=>x.MaKH).First();
+        }
+       public NhanVien  getNhaVien(long id){
+
+           return db.NhanViens.Where(x => x.IDUser == id).First();
+            
+        }
+ 
     }
 }
  // phan quyền

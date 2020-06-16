@@ -6,166 +6,180 @@
     
 }
 
-<h2>Delete</h2>
+<h2 style="color:red;text-align:center">XÓA SẢN PHẨM RA KHỎI DANH SÁCH CỬA HÀNG</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h5 style="color:blue;text-align:center">Bạn Có Muốn Xóa Sản Phẩm Này Không</h5>
 <div>
-    <h4>MatHang</h4>
+     
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.HeDieuHanh.TenHDH)
-        </dt>
+   
+        <div class="row">
+            <div class="col-md-6">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.HeDieuHanh.TenHDH)
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.HeDieuHanh.TenHDH)
-        </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.HeDieuHanh.TenHDH)
+                    </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.LoaiMatHang.TenLoaiMH)
-        </dt>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.LoaiMatHang.TenLoaiMH)
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.LoaiMatHang.TenLoaiMH)
-        </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.LoaiMatHang.TenLoaiMH)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.TenMh)
+                    </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TenMh)
-        </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.TenMh)
+                    </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.TenMh)
-        </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.GiaThanh)
+                    </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.GiaThanh)
-        </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.GiaThanh)
+                    </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.GiaThanh)
-        </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.GiaKhuyenMai)
+                    </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.GiaKhuyenMai)
-        </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.GiaKhuyenMai)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Soluong)
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.GiaKhuyenMai)
-        </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.Soluong)
+                    </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Soluong)
-        </dt>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.NgayNhap)
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Soluong)
-        </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.NgayNhap)
+                    </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.NgayNhap)
-        </dt>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.NgaySuaDoi)
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.NgayNhap)
-        </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.NgaySuaDoi)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Image)
+                    </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.NgaySuaDoi)
-        </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Image)
+                    </dd>
+                    </dl>
+</div>
+            <div class="col-md-6">
+                <dl class="dl-horizontal">
+                   
 
-        <dd>
-            @Html.DisplayFor(model => model.NgaySuaDoi)
-        </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.status)
+                    </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Image)
-        </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.status)
+                    </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Image)
-        </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ManHinh)
+                    </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.status)
-        </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.ManHinh)
+                    </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.status)
-        </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Ram)
+                    </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ManHinh)
-        </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Ram)
+                    </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.ManHinh)
-        </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.CameraT)
+                    </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Ram)
-        </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.CameraT)
+                    </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Ram)
-        </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.CameraS)
+                    </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CameraT)
-        </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.CameraS)
+                    </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.CameraT)
-        </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Cpu)
+                    </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CameraS)
-        </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Cpu)
+                    </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.CameraS)
-        </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Gpu)
+                    </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Cpu)
-        </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Gpu)
+                    </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Cpu)
-        </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.BoNho)
+                    </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Gpu)
-        </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.BoNho)
+                    </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Gpu)
-        </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.DungLuongPin)
+                    </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.BoNho)
-        </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.DungLuongPin)
+                    </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.BoNho)
-        </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.luotXem)
+                    </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DungLuongPin)
-        </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.luotXem)
+                    </dd>
+                    </dl>
+</div>
+        </div>
+       
 
-        <dd>
-            @Html.DisplayFor(model => model.DungLuongPin)
-        </dd>
+       
 
-        <dt>
-            @Html.DisplayNameFor(model => model.luotXem)
-        </dt>
+       
 
-        <dd>
-            @Html.DisplayFor(model => model.luotXem)
-        </dd>
 
-    </dl>
+ 
 
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
