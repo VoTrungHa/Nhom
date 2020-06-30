@@ -57,11 +57,6 @@ namespace ModeDb.EF
                 .Property(e => e.TongTien)
                 .HasPrecision(18, 0);
 
-            modelBuilder.Entity<DonHang>()
-                .HasMany(e => e.ChiTietDonHangs)
-                .WithRequired(e => e.DonHang)
-                .WillCascadeOnDelete(false);
-
             modelBuilder.Entity<Group>()
                 .Property(e => e.ID)
                 .IsUnicode(false);
@@ -86,11 +81,6 @@ namespace ModeDb.EF
             modelBuilder.Entity<KhachHang>()
                 .Property(e => e.Email)
                 .IsUnicode(false);
-
-            modelBuilder.Entity<KhachHang>()
-                .HasMany(e => e.DonHangs)
-                .WithRequired(e => e.KhachHang)
-                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<LoaiMatHang>()
                 .Property(e => e.MaLoaiHang)
@@ -129,11 +119,6 @@ namespace ModeDb.EF
                 .IsUnicode(false);
 
             modelBuilder.Entity<MatHang>()
-                .HasMany(e => e.ChiTietDonHangs)
-                .WithRequired(e => e.MatHang)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<MatHang>()
                 .HasMany(e => e.Contents)
                 .WithRequired(e => e.MatHang)
                 .WillCascadeOnDelete(false);
@@ -149,7 +134,7 @@ namespace ModeDb.EF
 
             modelBuilder.Entity<NhanVien>()
                 .Property(e => e.Email)
-                .IsFixedLength();
+                .IsUnicode(false);
 
             modelBuilder.Entity<Redential>()
                 .Property(e => e.UserGroupID)
@@ -185,16 +170,6 @@ namespace ModeDb.EF
 
             modelBuilder.Entity<User>()
                 .HasMany(e => e.DanhGias)
-                .WithRequired(e => e.User)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<User>()
-                .HasMany(e => e.KhachHangs)
-                .WithRequired(e => e.User)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<User>()
-                .HasMany(e => e.NhanViens)
                 .WithRequired(e => e.User)
                 .WillCascadeOnDelete(false);
         }

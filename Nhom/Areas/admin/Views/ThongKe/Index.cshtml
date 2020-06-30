@@ -4,6 +4,7 @@
     ViewBag.Title = "Index";
     Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
     var grid = new WebGrid(Model, canPage: true, defaultSort: "NgayNhap", rowsPerPage: 5);
+    double tong = 0;
 }
 
 <h2 style="color:red; text-align:center">Doanh Thu Bán Hàng</h2>
@@ -52,6 +53,22 @@ else
 }
   
 <div style="float:right">
-    <p style="color:black; font-size:22px">Tổng doanh Thu:<span style="color:red; font-size:20px"> 120000  vnd</span></p>
+    <p style="color:black; font-size:22px">Tổng doanh Thu:<span style="color:red; font-size:20px">
+       @if(@ViewBag.co==true)
+       {
+           @TempData["tonng"]
+             
+       }
+       else
+       {
+           foreach (var item in Model)
+                {
+                    tong += (double)item.TongTien;
+                }
+             @tong.ToString("#,##0")
+       }
+     
+      
+     </span></p>
 </div>
 

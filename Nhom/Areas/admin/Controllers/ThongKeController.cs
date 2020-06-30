@@ -32,18 +32,23 @@ namespace Nhom.Areas.admin.Controllers
             var s=Request["sau"];
             DateTime truoc=new DateTime();
             DateTime sau = new DateTime();
+            
             if (t.Length == 0 && s.Length == 0)
                 {
                     TempData["0"] = "Hãy chọn thời gian!";
+                     
+                    
                 }
                 else
                 if (t.Length == 0 )
                     {
                         TempData["0"] = "Chưa nhập ngày bắt đầu!";
+                         
                     }
                 else if (s.Length == 0)
                     {
                         TempData["0"] = "Chưa nhập ngày kết thúc!";
+                        
                     }
                     else
                     {
@@ -54,6 +59,7 @@ namespace Nhom.Areas.admin.Controllers
                     if (truoc > sau)
                         {
                             TempData["0"] = "khoản thời gian cần tìm không hợp lệ!";
+                            
                         } 
                         else
                         {
@@ -62,12 +68,19 @@ namespace Nhom.Areas.admin.Controllers
                             {
                                 TempData["check"] = 0;
                             }
+                            double tong = 0;
+                            List<DonHang> ds = donhangs.ToList();
+                            foreach (var iten in ds)
+                            {
+                                tong += (double)iten.TongTien;
+                            } @ViewBag.co = true;
+                            @TempData["tonng"] = tong;
                             return View("Index",donhangs.ToList());
                         }
-            
-            
+                    @ViewBag.co = false;
 
-            return View("Index");
+
+                    return Redirect("Index");
         }
 
         // GET: /admin/ThongKe/Details/5

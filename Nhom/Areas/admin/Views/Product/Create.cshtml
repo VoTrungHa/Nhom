@@ -3,14 +3,14 @@
 @{
     ViewBag.Title = "Create";
     Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
-    
+
 }
 <div class="container">
     <div class="section-content">
         <h5 class="mb-4">
             <font style="vertical-align:inherit; font-size:30px">Nhập Thêm Sản Phẩm</font>
         </h5>
-        @using (Html.BeginForm("Create","Product",FormMethod.Post, new { enctype = "multipart/form-data" }))
+        @using (Html.BeginForm("Create", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
             @Html.AntiForgeryToken()
             @Html.ValidationSummary(true, "", new { @style = "color:red" })
@@ -75,13 +75,14 @@
                         </div>
                         <div class="col-md-4 mb-3">
                             <div class="form-group">
-                                @Html.LabelFor(model => model.MaLoaiHang, "MaLoaiHang", new { @class = "control-label" })
+                                @Html.LabelFor(model => model.MaLoaiHang, "MaLoaiHang", new { @class = "control-label col-md-2" })
                                 <div class="col-md-10">
-                                    @Html.DropDownList("MaLoaiHang", String.Empty)<br />
-                                    @Html.ValidationMessageFor(model => model.MaLoaiHang, "", new { @style = "color:red" })
+                                    @Html.DropDownList("MaLoaiHang", String.Empty)<br>
+                                    @Html.ValidationMessageFor(model => model.MaLoaiHang,"", new { @style = "color:red" })
                                 </div>
                             </div>
                         </div>
+
                         <div class="col-md-4 mb-3">
                             <div class="form-group">
                                 @Html.LabelFor(model => model.NgayNhap, new { @class = "control-label " })
@@ -92,6 +93,7 @@
                                 </div>
                             </div>
                         </div>
+                       
 
                         <div class="col-md-4 mb-3">
                             <div class="form-group">
@@ -171,7 +173,7 @@
                                 @Html.DropDownList("MaHDH", String.Empty)<br />
                                 @Html.ValidationMessageFor(model => model.MaHDH, "", new { @style = "color:red" })
                             </div>
-                        </div> 
+                        </div>
                     </div>
                     <div class="button-cj">
                         <div class="form-group">
@@ -187,4 +189,3 @@
 
     </div>
 </div>
-

@@ -7,23 +7,21 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ModeDb.EF;
-using Nhom.Common;
 
 namespace Nhom.Areas.admin.Controllers
 {
-    public class ProductController : Controller
+    public class spController : Controller
     {
         private ModelDbNhom db = new ModelDbNhom();
 
-        // GET: /admin/Product/
-        [HasCredentialAttb(ID = "VIEW_PRO")]
+        // GET: /admin/sp/
         public ActionResult Index()
         {
             var mathangs = db.MatHangs.Include(m => m.HeDieuHanh).Include(m => m.LoaiMatHang);
             return View(mathangs.ToList());
         }
 
-        // GET: /admin/Product/Details/5
+        // GET: /admin/sp/Details/5
         public ActionResult Details(long? id)
         {
             if (id == null)
@@ -38,78 +36,34 @@ namespace Nhom.Areas.admin.Controllers
             return View(mathang);
         }
 
-        // GET: /admin/Product/Create
-         [HasCredentialAttb(ID = "ADD_PRO")]
-       public ActionResult Create()
+        // GET: /admin/sp/Create
+        public ActionResult Create()
         {
             ViewBag.MaHDH = new SelectList(db.HeDieuHanhs, "MaHDH", "TenHDH");
-            ViewBag.MaLoaiHang = new SelectList(db.LoaiMatHangs, "MaLoaiHang", "TenLoaiMH"); 
-            string dateAsString = DateTime.Now.ToString("MM/dd/yyyy");
-            ViewBag.date = dateAsString;
-
+            ViewBag.MaLoaiHang = new SelectList(db.LoaiMatHangs, "MaLoaiHang", "TenLoaiMH");
             return View();
         }
 
-        // POST: /admin/Product/Create
+        // POST: /admin/sp/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [AcceptVerbs(HttpVerbs.Post)]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include="MaMH,TenMh,GiaThanh,GiaKhuyenMai,Soluong,MaLoaiHang,NgayNhap,NgaySuaDoi,Image,status,ManHinh,Ram,CameraT,CameraS,Cpu,Gpu,BoNho,DungLuongPin,luotXem,MaHDH")] MatHang mathang)
-        { 
-            var imgNV = Request.Files["Image"];
-            //Lấy thông tin từ input type=file có tên Avatar
-            string postedFileName = System.IO.Path.GetFileName(imgNV.FileName);
-            //Lưu hình đại diện về Server
-            object s = mathang.HeDieuHanh;
-            var path = Server.MapPath("/Images/" + postedFileName);
-            string ngay = Request["ngayNhap"];
-            if (postedFileName.Length > 0)
+        {
+            if (ModelState.IsValid)
             {
-                imgNV.SaveAs(path);
-
-                if (ngay.Length > 0)
-                {
-
-                    if (ModelState.IsValid)
-                    {
-                        DateTime ngaynhap = DateTime.Parse(ngay);
-                        mathang.NgayNhap = ngaynhap;
-                        mathang.Image = postedFileName;
-                        db.MatHangs.Add(mathang);
-                        db.SaveChanges();
-                        ModelState.AddModelError("", "Thêm thành công");
-                    }
-                    else
-                    {
-                        ModelState.AddModelError("", "Thêm không thành công");
-                    }
-                     
-                     
-                }
-                else
-                {
-                    ModelState.AddModelError("", "Ngày nhập sản phẩm còn trống !");
-                }
-
-
-            }
-            else
-            {
-                ModelState.AddModelError("", "Chưa có một ảnh mô tả sản phẩm");
+                db.MatHangs.Add(mathang);
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
 
             ViewBag.MaHDH = new SelectList(db.HeDieuHanhs, "MaHDH", "TenHDH", mathang.MaHDH);
             ViewBag.MaLoaiHang = new SelectList(db.LoaiMatHangs, "MaLoaiHang", "TenLoaiMH", mathang.MaLoaiHang);
             return View(mathang);
         }
-       
- 
 
-
-        // GET: /admin/Product/Edit/5
-         [HasCredentialAttb(ID = "EDIT_PRO")]
+        // GET: /admin/sp/Edit/5
         public ActionResult Edit(long? id)
         {
             if (id == null)
@@ -126,49 +80,25 @@ namespace Nhom.Areas.admin.Controllers
             return View(mathang);
         }
 
-        // POST: /admin/Product/Edit/5
+        // POST: /admin/sp/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include="MaMH,TenMh,GiaThanh,GiaKhuyenMai,Soluong,MaLoaiHang,NgayNhap,NgaySuaDoi,Image,status,ManHinh,Ram,CameraT,CameraS,Cpu,Gpu,BoNho,DungLuongPin,luotXem,MaHDH")] MatHang mathang)
         {
-            string ngay = Request["ngaysuadoi"];
-            if (ngay.Length > 0)
+            if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)
-                {
-                    var imgNV = Request.Files["Image"];
-                    //Lấy thông tin từ input type=file có tên Avatar
-                    string postedFileName = System.IO.Path.GetFileName(imgNV.FileName);
-                    if (postedFileName.Length > 0)
-                    {
-                        var path = Server.MapPath("/Images/" + postedFileName);
-                        imgNV.SaveAs(path);
-                        mathang.Image = postedFileName;
-                    }
-                    DateTime ngaysua = DateTime.Parse(ngay);
-                    mathang.NgaySuaDoi = ngaysua;
-                    db.Entry(mathang).State = EntityState.Modified;
-                    db.SaveChanges();
-                    ModelState.AddModelError("", "Chỉnh sửa thành Công");
-                }
-                else
-                {
-                    ModelState.AddModelError("", "Chỉnh sửa Không thành Công");
-                }
-            }
-            else
-            {
-                ModelState.AddModelError("", "Ngày Chỉnh sửa còn trống");
+                db.Entry(mathang).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
             ViewBag.MaHDH = new SelectList(db.HeDieuHanhs, "MaHDH", "TenHDH", mathang.MaHDH);
             ViewBag.MaLoaiHang = new SelectList(db.LoaiMatHangs, "MaLoaiHang", "TenLoaiMH", mathang.MaLoaiHang);
             return View(mathang);
         }
 
-        // GET: /admin/Product/Delete/5
-         [HasCredentialAttb(ID = "DELETE_PRO")]
+        // GET: /admin/sp/Delete/5
         public ActionResult Delete(long? id)
         {
             if (id == null)
@@ -183,7 +113,7 @@ namespace Nhom.Areas.admin.Controllers
             return View(mathang);
         }
 
-        // POST: /admin/Product/Delete/5
+        // POST: /admin/sp/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(long id)

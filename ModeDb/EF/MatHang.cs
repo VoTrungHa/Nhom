@@ -21,72 +21,93 @@
         [Key]
         public long MaMH { get; set; }
 
-        [Required(ErrorMessage="Nhập Tên Sản Phẩm")]
-        [DisplayName("Tên Mặt Hàng")]
+        [DisplayName("Tên Sản Phẩm")]
+        [Required(ErrorMessage = "Tên Thành Trống")]
         [StringLength(100)]
         public string TenMh { get; set; }
-        [Required(ErrorMessage = "Nhập Giá Chính")]
-        [DisplayName("Giá Chính")]
+
+        [DisplayName("Giá Thành")]
+        [Required(ErrorMessage = "Giá Thành Trống")]
+        [DisplayFormat(DataFormatString = "{0:#,##0}", ApplyFormatInEditMode = true)]
         public decimal? GiaThanh { get; set; }
-        [Required(ErrorMessage = "Nhập Giá khuyến Mãi")]
-        [DisplayName("Giá khuyến Mãi")]
+
+        [DisplayName("Giá Khuyến Mãi")]
+        [Required(ErrorMessage = "Giá Thành Trống")]
+        [DisplayFormat(DataFormatString = "{0:#,##0}", ApplyFormatInEditMode = true)]
         public decimal? GiaKhuyenMai { get; set; }
-        [Required(ErrorMessage = "Nhập Số Lượng")]
+
+
         [DisplayName("Số Lượng")]
+        [Required(ErrorMessage = "Số Lượng Thành Trống")]
         public int? Soluong { get; set; }
-        [Required(ErrorMessage = "Chọn Loại Hàng")]
-        [DisplayName("Mã Loại Hàng")]
+
+        [DisplayName("Loại Hàng")]
+        [Required(ErrorMessage = "Loại Hàng Trống")]
         [StringLength(50)]
         public string MaLoaiHang { get; set; }
         [Required(ErrorMessage = "Ngày Nhập Còn Trống")]
         [DisplayName("Ngày Nhập ")]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+         
         [Column(TypeName = "date")]
         public DateTime? NgayNhap { get; set; }
 
+
+
+        [DisplayName("Ngày Sửa ")]
         [Column(TypeName = "date")]
         public DateTime? NgaySuaDoi { get; set; }
+
 
         [StringLength(150)]
         public string Image { get; set; }
 
         public bool? status { get; set; }
-        [Required(ErrorMessage = "Nhập Màn Hình")]
+
         [DisplayName("Màn Hình")]
+        [Required(ErrorMessage = "Màn Hình Trống")]
         [StringLength(50)]
         public string ManHinh { get; set; }
-        [Required(ErrorMessage = "Nhập Ram")]
-        [DisplayName("Ram")]
+
+        [DisplayName("RAM")]
+        [Required(ErrorMessage = "RAM Trống")]
         [StringLength(50)]
         public string Ram { get; set; }
-        [Required(ErrorMessage = "Nhập Camera Trước")]
-        [DisplayName("Camera Trước")]
+
+        [DisplayName("Camera")]
+        [Required(ErrorMessage = "Camera Trống")]
         [StringLength(50)]
         public string CameraT { get; set; }
-        [Required(ErrorMessage = "Nhập Camera Sau")]
-        [DisplayName("Camera Sau")]
+
+        [DisplayName("Camera")]
+        [Required(ErrorMessage = "Camera Trống")]
         [StringLength(50)]
         public string CameraS { get; set; }
-        [Required(ErrorMessage = "Nhập CPU")]
-        [DisplayName("CPU")]
+
+        [DisplayName("C P U")]
+        [Required(ErrorMessage = "C P U Trống")]
         [StringLength(150)]
         public string Cpu { get; set; }
-        [Required(ErrorMessage = "Nhập GPU")]
-        [DisplayName("GPU")]
+
+        [DisplayName("G P U")]
+        [Required(ErrorMessage = "G P U Trống")]
         [StringLength(150)]
         public string Gpu { get; set; }
-        [Required(ErrorMessage = "Nhập Bộ Nhớ")]
+
         [DisplayName("Bộ Nhớ")]
+        [Required(ErrorMessage = " Bộ Nhớ Trống")]
         [StringLength(150)]
         public string BoNho { get; set; }
-        [Required(ErrorMessage = "Nhập Dung Lượng Pin")]
+
         [DisplayName("Dung Lượng Pin")]
+        [Required(ErrorMessage = "Lượng Pin Trống")]
         [StringLength(50)]
         public string DungLuongPin { get; set; }
 
         public int? luotXem { get; set; }
-        [Required(ErrorMessage = "Chọn Hệ Điều Hàn")]
-        [DisplayName("Hệ Điều hành")]
+
+        [DisplayName("Hệ Điều Hành")]
+        [Required(ErrorMessage = "Hệ Điều Hành Trống")]
         [StringLength(50)]
         public string MaHDH { get; set; }
 
