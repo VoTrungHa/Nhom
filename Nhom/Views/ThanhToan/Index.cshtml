@@ -27,7 +27,7 @@
                 <h3 class="text-center">Thông Tin Mua Hàng</h3>
                 <table class="mt-3">
                     <tr>
-                        <td><strong><label for="fname">Email: </label></strong></td>
+                        <td><strong><label for="fname" >Email: </label></strong></td>
                         <td><input type="email" id="fname" value=@ViewBag.email name="email"></td>
                     </tr>
                     <tr>
@@ -40,11 +40,11 @@
                     </tr>
                     <tr>
                         <td><strong><label for="fname">Địa Chỉ: </label></strong></td>
-                        <td><input type="text" id="fname" value="" name="diachi"></td>
+                        <td><input size="30px" type="text" id="fname" value="" name="diachi" row="5"></td>
                     </tr>
                     <tr>
                         <td><strong><label for="fname">Ghi Chú:  </label></strong></td>
-                        <td><textarea class="form-control" name="ghichu" rows="5"></textarea></td>
+                        <td><textarea class="form-control" name="ghichu"></textarea></td>
                     </tr>
                 </table>
                     
@@ -99,7 +99,7 @@
                 <div class="border-bottom ml-5">
                     <div>
                         <h4 class="text-muted">Tạm tính</h4>
-                        <strong>@tongtien</strong>
+                        <strong>@tongtien.ToString("#,##0")</strong>
                         
                     </div>
                     <div>
@@ -110,7 +110,7 @@
                 <div class="border-bottom ml-5">
 
                     <div class="price">
-                        <p>Tổng Tiền: <strong>@tongtien</strong></p>
+                        <p>Tổng Tiền: <strong>@tongtien.ToString("#,##0")</strong></p>
 
                     </div>
 

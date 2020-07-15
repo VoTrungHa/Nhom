@@ -5,14 +5,14 @@
     Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Edit</h2>
+<h2 style="color:red; font-size:28px;text-align:center">Bạn Muốn Thay Đổi Đơn Hàng Này</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>DonHang</h4>
+      
         <hr />
         @Html.ValidationSummary(true)
         @Html.HiddenFor(model => model.SoHoaDon)

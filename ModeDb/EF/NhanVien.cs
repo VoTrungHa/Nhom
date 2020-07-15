@@ -1,7 +1,8 @@
-namespace ModeDb.EF
+﻿namespace ModeDb.EF
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
@@ -18,15 +19,17 @@ namespace ModeDb.EF
         [Key]
         public long MaNV { get; set; }
 
+         [DisplayName("Tên Nhân Viên")]
         [StringLength(50)]
         public string TenNV { get; set; }
 
+         [DisplayName("Địa Chỉ")]
         [StringLength(100)]
         public string DiaChi { get; set; }
-
+         [DisplayName("Điện thoại")]
         [StringLength(20)]
         public string SoDT { get; set; }
-
+         [DisplayName("Email")]
         [StringLength(50)]
         public string Email { get; set; }
 

@@ -21,8 +21,8 @@
           <div class="row">
               <div class="col-md-6">
                   <div class="form-group">
-                      @Html.LabelFor(model => model.KhachHang.TenKH, new { @class = "control-label col-md-2" })
-                      <div class="col-md-10">
+                      @Html.LabelFor(model => model.KhachHang.TenKH, new { @class = "control-label col-md-12" })
+                      <div class="col-md-6">
                           @Html.TextBoxFor(model => model.KhachHang.TenKH, new { disabled = "disabled" })
                           @Html.ValidationMessageFor(model => model.KhachHang.TenKH)
                       </div>
@@ -30,8 +30,8 @@
               </div> 
               <div class="col-md-6">
                   <div class="form-group">
-                      @Html.LabelFor(model => model.KhachHang.SoDT, new { @class = "control-label col-md-2" })
-                      <div class="col-md-10">
+                      @Html.LabelFor(model => model.KhachHang.SoDT, new { @class = "control-label col-md-12" })
+                      <div class="col-md-8">
                           @Html.TextBoxFor(model => model.KhachHang.SoDT, new { disabled = "disabled" })
                           @Html.ValidationMessageFor(model => model.KhachHang.SoDT)
                       </div>
@@ -39,8 +39,8 @@
               </div>
               <div class="col-md-6">
                   <div class="form-group">
-                      @Html.LabelFor(model => model.KhachHang.User.Email, new { @class = "control-label col-md-2" })
-                      <div class="col-md-10">
+                      @Html.LabelFor(model => model.KhachHang.User.Email, new { @class = "control-label col-md-12" })
+                      <div class="col-md-8">
                           @Html.TextBoxFor(model => model.KhachHang.Email, new { disabled = "disabled" })
                           @Html.ValidationMessageFor(model => model.KhachHang.Email)
                       </div>
@@ -48,8 +48,8 @@
               </div>
               <div class="col-md-6">
                   <div class="form-group">
-                      @Html.LabelFor(model => model.NgayDH, new { @class = "control-label col-md-2" })
-                      <div class="col-md-10">
+                      @Html.LabelFor(model => model.NgayDH, new { @class = "control-label col-md-12" })
+                      <div class="col-md-8">
                           @Html.TextBoxFor(model => model.NgayDH, new { disabled = "disabled" })
                           @Html.ValidationMessageFor(model => model.NgayDH)
                       </div>
@@ -58,8 +58,8 @@
              
               <div class="col-md-6">
                   <div class="form-group">
-                      @Html.LabelFor(model => model.NgayGH, new { @class = "control-label col-md-2" })
-                      <div class="col-md-10">
+                      @Html.LabelFor(model => model.NgayGH, new { @class = "control-label col-md-12" })
+                      <div class="col-md-8">
                           <input type="text" name="ngayGH" value="@ViewBag.ngayGH"  />
                            
                               <span style="color:red">@TempData["co"]</span>
@@ -69,8 +69,8 @@
               </div>
               <div class="col-md-6">
                   <div class="form-group">
-                      @Html.LabelFor(model => model.NoiGiaoHang, new { @class = "control-label col-md-2" })
-                      <div class="col-md-10">
+                      @Html.LabelFor(model => model.NoiGiaoHang, new { @class = "control-label col-md-12" })
+                      <div class="col-md-8">
 
                           @Html.TextBoxFor(model => model.NoiGiaoHang, new { disabled = "disabled" })
                           @Html.ValidationMessageFor(model => model.NoiGiaoHang)
@@ -79,8 +79,8 @@
               </div>
               <div class="col-md-6">
                   <div class="form-group">
-                      @Html.LabelFor(model => model.TongTien, new { @class = "control-label col-md-2" })
-                      <div class="col-md-10">
+                      @Html.LabelFor(model => model.TongTien, new { @class = "control-label col-md-12" })
+                      <div class="col-md-8">
                           @Html.TextBoxFor(model => model.TongTien, new { disabled = "disabled" })
                           @Html.ValidationMessageFor(model => model.TongTien)
                       </div>
@@ -88,8 +88,8 @@
               </div>
               <div class="col-md-6">
                   <div class="form-group">
-                      @Html.LabelFor(model => model.ghichu, new { @class = "control-label col-md-2" })
-                      <div class="col-md-10">
+                      @Html.LabelFor(model => model.ghichu, new { @class = "control-label col-md-12" })
+                      <div class="col-md-8">
                           @Html.TextBoxFor(model => model.ghichu, new { disabled = "disabled" })
                           @Html.ValidationMessageFor(model => model.ghichu)
                       </div>

@@ -101,6 +101,7 @@ namespace Nhom.Controllers
                     }
 
                     TempData["thanhtoan"] = "Thanh Toán Thành Công";
+                    Session["CARTSESSION"] = null;
                 }
                 else
                 {

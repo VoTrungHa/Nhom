@@ -1,7 +1,8 @@
-namespace ModeDb.EF
+﻿namespace ModeDb.EF
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
@@ -22,15 +23,16 @@ namespace ModeDb.EF
 
         public long? MaNV { get; set; }
 
+          [DisplayName("Ngày đặt hàng")]
         public DateTime? NgayDH { get; set; }
-
+        [DisplayName("Ngày giao hàng")]
         public DateTime? NgayGH { get; set; }
-
+        [DisplayName("Nơi giao")]
         [StringLength(150)]
         public string NoiGiaoHang { get; set; }
-
+        [DisplayName("Tổng tiền")]
         public decimal? TongTien { get; set; }
-
+        [DisplayName("Ghi chú")]
         [StringLength(150)]
         public string ghichu { get; set; }
 

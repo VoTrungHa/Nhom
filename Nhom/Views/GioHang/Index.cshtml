@@ -2,7 +2,7 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutPublic.cshtml";
-    double? tongtien = 0;
+    double tongtien = 0;
 }
 
 <h2 style="color:red;text-align:center;font-size:24px;margin:5rem 5rem">Giỏ Hàng</h2>
@@ -48,7 +48,7 @@
 
     <section style="float:right">
         <div>
-            <p>Tổng tiền:<strong> @tongtien</strong></p>
+            <p>Tổng tiền:<strong> @tongtien.ToString("#,##0")</strong></p>
         </div>
 
         <div  >

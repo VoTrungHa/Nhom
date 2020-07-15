@@ -65,12 +65,12 @@
                     <h4>Điện Thoại</h4>
                      
                 </div>
-                <div class="mode_contents mt-5 pb-5 pl-3 pr-3">
+                <div class="mode_contents mt-3 pb-5 pl-3 pr-3">
                     <div class="row"> 
                        @foreach (var item in Model) {
                         <div class="col-md-3 mt-3">
                             <div class="item_product">
-                                <a href="#">
+                                <a href="/Home/XemChiTietSP?id=@item.MaMH">
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="image-product">
@@ -87,15 +87,17 @@
                                             </div>
                                         </div>
                                         <div class="col-md-12">
-                                            <div class="sub-product">
+                                            <div class="sub-product mb-1">
                                                 <p><strong><i class="fas fa-tv"></i> Màn Hình: </strong>@item.ManHinh</p>
                                                 <p><strong><i class="fas fa-camera-retro"></i> Camera Trước: </strong>@item.CameraT</p>
                                                 <p><strong><i class="fas fa-camera-retro"></i> Camera sau: </strong>@item.CameraS</p>
                                                 <p><strong><i class="fas fa-microchip"></i> CPU: </strong>@item.Cpu</p>
-                                                <p><strong><i class="fas fa-microchip"></i>GPU: </strong>@item.Gpu</p>
+                                              
                                                 <p><strong><i class="fas fa-hdd"></i> RAM: </strong>@item.Ram</p>
                                                 <p><strong><i class="fas fa-hdd"></i> Bộ Nhớ Trong: </strong>@item.BoNho</p>
                                                 <p><strong><i class="fas fa-battery-full"></i> Dung Lượng PIN: </strong>@item.DungLuongPin</p>
+                                                <p><strong><i class="fas fa-hdd"></i> Hệ Điều Hành: </strong>@item.HeDieuHanh.TenHDH</p>
+
                                             </div>
                                         </div>
                                     </div>

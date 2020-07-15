@@ -13,10 +13,12 @@
     @using(Html.BeginForm("Indexs","ThongKe",FormMethod.Post))
     {
          <div class="form-group">
-        <input type="date" name="truoc" value=@TempData["date"] />
-             <input type="date" name="sau" value=@TempData["date"] />
+             <label>Ngày bắt đầu</label>
+        <input type="text" name="truoc" value=@TempData["truoc"] />
+             <label>Ngày Kết Thúc</label>
+             <input type="text" name="sau" value=@TempData["sau"] />
         <input type="submit" value="Lọc"/>
-        <span>@TempData["0"]</span>
+        <span style="color:red">@TempData["0"]</span>
     </div>
     }
    
@@ -57,6 +59,7 @@ else
        @if(@ViewBag.co==true)
        {
            @TempData["tonng"]
+          
              
        }
        else
@@ -66,6 +69,7 @@ else
                     tong += (double)item.TongTien;
                 }
              @tong.ToString("#,##0")
+             
        }
      
       

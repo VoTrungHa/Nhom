@@ -1,7 +1,8 @@
-namespace ModeDb.EF
+﻿namespace ModeDb.EF
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
@@ -17,8 +18,9 @@ namespace ModeDb.EF
 
         [Key]
         [StringLength(50)]
+        [DisplayName("Mã Hệ Điều Hành")]
         public string MaHDH { get; set; }
-
+        [DisplayName("Hệ điều hành")]
         [StringLength(50)]
         public string TenHDH { get; set; }
 

@@ -20,8 +20,7 @@ namespace Nhom.Areas.admin.Controllers
         [HasCredentialAttb(ID = "DT")]
         public ActionResult Index()
         {
-            TempData["date"]
-                = DateTime.Now.ToString("dd/mm/yyyy");
+             
             var donhangs = db.DonHangs.Where(x=>x.status==false).Include(d => d.KhachHang).Include(d => d.NhanVien);
             return View(donhangs.ToList());
         }
@@ -33,6 +32,7 @@ namespace Nhom.Areas.admin.Controllers
             DateTime truoc=new DateTime();
             DateTime sau = new DateTime();
             
+            
             if (t.Length == 0 && s.Length == 0)
                 {
                     TempData["0"] = "Hãy chọn thời gian!";
@@ -43,12 +43,16 @@ namespace Nhom.Areas.admin.Controllers
                 if (t.Length == 0 )
                     {
                         TempData["0"] = "Chưa nhập ngày bắt đầu!";
-                         
+                        sau = DateTime.Parse(s);
+                        TempData["sau"] = sau;
+                        return Redirect("Index");
                     }
                 else if (s.Length == 0)
                     {
                         TempData["0"] = "Chưa nhập ngày kết thúc!";
-                        
+                        truoc = DateTime.Parse(t);
+                        TempData["truoc"] = truoc;
+                        return Redirect("Index");
                     }
                     else
                     {
@@ -59,6 +63,11 @@ namespace Nhom.Areas.admin.Controllers
                     if (truoc > sau)
                         {
                             TempData["0"] = "khoản thời gian cần tìm không hợp lệ!";
+                            sau = DateTime.Parse(s);
+                            TempData["sau"] = sau;
+                            truoc = DateTime.Parse(t);
+                            TempData["truoc"] = truoc;
+                            return Redirect("Index");
                             
                         } 
                         else
@@ -66,7 +75,8 @@ namespace Nhom.Areas.admin.Controllers
                             var donhangs = db.DonHangs.Where(x => x.status == false && x.NgayDH >= truoc && x.NgayDH <= sau).Include(d => d.KhachHang).Include(d => d.NhanVien);
                             if (donhangs == null)
                             {
-                                TempData["check"] = 0;
+                                @ViewBag.co = false;
+                                TempData["0"] = "Khong co don hang!";
                             }
                             double tong = 0;
                             List<DonHang> ds = donhangs.ToList();
@@ -77,7 +87,7 @@ namespace Nhom.Areas.admin.Controllers
                             @TempData["tonng"] = tong;
                             return View("Index",donhangs.ToList());
                         }
-                    @ViewBag.co = false;
+                  
 
 
                     return Redirect("Index");
